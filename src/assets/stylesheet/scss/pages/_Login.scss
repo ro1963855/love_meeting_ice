@@ -1,0 +1,23 @@
+.login {
+  margin: 48px 0;
+  .title {
+    font: $font-title;
+    color: $black;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .form_item {
+    margin-bottom: 24px;
+    h2 {
+      margin-bottom: 8px;
+    }
+
+  }
+
+  .form_btn {
+    margin-top: 16px;
+    color: $white;
+  }
+
+}

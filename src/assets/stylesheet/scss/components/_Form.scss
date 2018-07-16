@@ -1,0 +1,38 @@
+.form_item {
+  h2 {
+    font: $font-form;
+    color: $black;
+    letter-spacing: 0;
+  }
+
+  input {
+    height: $form_height;
+    background: $white;
+    border: 2px solid $black;
+    border-radius: 8px;
+    &::placeholder { 
+      font: $font-form;
+      color: $color-placholder;
+      letter-spacing: 0;
+      text-align: left;
+      line-height: 24px;
+    }
+
+    &.form-control:focus {
+      border-color: $primary;
+      outline: 0;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+.form_btn {
+  height: $form_height;
+  border-radius: 8px;
+  font-size: 20px;
+  font: $font-form;
+  color: $white;
+  text-align: center;
+  line-height: 25px;
+}
