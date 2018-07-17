@@ -9,7 +9,7 @@
     "start": "npm run dev | npm run server",
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
-    "server": "node server/index"
+    "server": "node server/server.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0",
@@ -31,11 +31,14 @@
     "less": "^3.7.1",
     "mysql": "^2.15.0",
     "node-sass": "^4.9.2",
+    "sails-mysql": "^1.0.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.2",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
-    "vue-session": "^1.0.0"
+    "vue-session": "^1.0.0",
+    "waterline": "^0.13.4",
+    "waterline-table": "0.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

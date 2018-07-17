@@ -66,9 +66,9 @@ export default {
       this.$http
         .post('/api/account/login', { account, password })
         .then((response) => {
-          if (response.data.length === 1) {
+          if (response.data !== '') {
             this.$session.start();
-            this.$session.set(this.sessionKey.id, response.data[0].id);
+            this.$session.set(this.sessionKey.id, response.data.id);
             this.$router.push({ name: 'Home' });
           } else {
             alert('Login failed');
