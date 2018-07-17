@@ -7,6 +7,10 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+import VueRouter from 'vue-router';
+// import VueResource from 'vue-resource';
 import './assets/stylesheet/build/all.min.css';
 import App from './App';
 import router from './router';
@@ -16,6 +20,9 @@ library.add(far);
 library.add(fab);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(BootstrapVue);
+Vue.use(VueAxios, axios);
+Vue.use(VueRouter);
+// Vue.use(VueResource);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

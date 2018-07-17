@@ -41,7 +41,13 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    const account = this.account;
+    const password = this.password;
+    this.$http.post('/api/account/login', { account, password }).then((response) => {
+      console.log(response);
+    });
+  },
   mounted() {},
   computed: {
     isSubmitDisabled() {
