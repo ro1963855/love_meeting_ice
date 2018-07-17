@@ -5,7 +5,7 @@ const router = express.Router();
 const mysql = require('mysql');
 const $sql = require('../sqlMap/accountSqlMap');
 
-// 连接数据库
+// connect sql
 const conn = mysql.createConnection(models.mysql);
 
 conn.connect();
@@ -20,7 +20,7 @@ const jsonWrite = (res, ret) => {
   }
 };
 
-// 增加用户接口
+// add request port
 router.post('/login', (req, res) => {
   const sql = $sql.account.login;
   const params = req.body;

@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <div class="wrap container">
+    <div class="container">
       <div class="row">
         <div class="col-12">
           <h1 class="title">Login</h1>
@@ -16,13 +16,14 @@
             <li class="form_item">
               <h2>Password</h2>
               <b-form-input v-model.trim="login.password"
-                            type="text"
+                            type="password"
                             placeholder="Enter your password"></b-form-input>
             </li>
           </ol>
           <button type="button"
                   class="btn btn-primary form_btn w-100"
-                  :disabled="isSubmitDisabled">Sign in</button>
+                  :disabled="isSubmitDisabled"
+                  @click="sendLoginRequest()">Sign in</button>
         </div>
       </div>
     </div>
@@ -39,14 +40,13 @@ export default {
         account: '',
         password: '',
       },
+      sessionKey: {
+        id: 'id',
+      },
     };
   },
   created() {
-    const account = this.account;
-    const password = this.password;
-    this.$http.post('/api/account/login', { account, password }).then((response) => {
-      console.log(response);
-    });
+    this.isAlreadyLogin();
   },
   mounted() {},
   computed: {
@@ -54,11 +54,27 @@ export default {
       return this.login.account === '' || this.login.password === '';
     },
   },
-  watch: {
-    // var(new, old) {}
-  },
   methods: {
-    // foo() {},
+    isAlreadyLogin() {
+      if (this.$session.get(this.sessionKey.id)) {
+        this.$router.push({ name: 'Home' });
+      }
+    },
+    sendLoginRequest() {
+      const account = this.login.account;
+      const password = this.login.password;
+      this.$http
+        .post('/api/account/login', { account, password })
+        .then((response) => {
+          if (response.data.length === 1) {
+            this.$session.start();
+            this.$session.set(this.sessionKey.id, response.data[0].id);
+            this.$router.push({ name: 'Home' });
+          } else {
+            alert('Login failed');
+          }
+        });
+    },
   },
 };
 </script>

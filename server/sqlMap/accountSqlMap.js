@@ -1,6 +1,5 @@
-// sql语句
+// sql query
 const sqlMap = {
-  // 用户
   account: {
     login: `
       SELECT u.id
