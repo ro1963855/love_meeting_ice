@@ -1,4 +1,5 @@
 var mysqlAdapter = require('sails-mysql');
+var config = require('./config.json');
 
 var wlconfig = {
     adapters: {
@@ -9,11 +10,11 @@ var wlconfig = {
     datastores: {
         myLocalMysql: {
             adapter : 'mysql',
-            host : 'localhost',
-            port : 3306,
-            user : '',
-            password : '',
-            database : ''
+            host : config.mysql.host,
+            port : config.mysql.port,
+            user : config.mysql.user,
+            password : config.mysql.password,
+            database : config.mysql.database
         }
     },
 };

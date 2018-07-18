@@ -41,7 +41,7 @@ export default {
         password: '',
       },
       sessionKey: {
-        id: 'id',
+        token: 'token',
       },
     };
   },
@@ -56,19 +56,25 @@ export default {
   },
   methods: {
     isAlreadyLogin() {
-      if (this.$session.get(this.sessionKey.id)) {
-        this.$router.push({ name: 'Home' });
+      const token = this.$session.get(this.sessionKey.token);
+      if (token) {
+        this.$http
+          .post('/api/account/isLogin', {}, { headers: { 'x-access-token': token } })
+          .then((response) => {
+            if (response.status === 200) {
+              this.$router.push({ name: 'Home' });
+            }
+          });
       }
     },
     sendLoginRequest() {
       const account = this.login.account;
       const password = this.login.password;
-      this.$http
-        .post('/api/account/login', { account, password })
+      this.$http.post('/api/account/login', { account, password })
         .then((response) => {
-          if (response.data !== '') {
+          if (response.status === 200) {
             this.$session.start();
-            this.$session.set(this.sessionKey.id, response.data.id);
+            this.$session.set(this.sessionKey.token, response.data.token);
             this.$router.push({ name: 'Home' });
           } else {
             alert('Login failed');
