@@ -12,11 +12,14 @@ export default {
   },
   created() {},
   mounted() {},
+  computed: {
+    // variable() {},
+  },
   watch: {
-    // test(new, old) {}
+    // variable(new, old) {}
   },
   methods: {
-    test() {},
+    // foo() {},
   },
 };
 </script>

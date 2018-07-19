@@ -1,15 +1,21 @@
 <template>
   <div id="app">
     <router-view v-if="isLoginLayout"/>
-    <div v-if="!isLoginLayout">
+    <div v-if="!isLoginLayout" class="totoal_layout">
+      <navbar-header/>
       <router-view/>
     </div>
   </div>
 </template>
 
 <script>
+import NavbarHeader from '@/components/NavbarHeader';
+
 export default {
   name: 'App',
+  components: {
+    NavbarHeader,
+  },
   created() {
     this.isAlreadyLogin();
   },

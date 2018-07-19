@@ -1796,15 +1796,28 @@ h2,h3{page-break-after:avoid}
 @font-face{font-family:Roboto;font-style:normal;font-weight:400;src:local("Roboto"),local("Roboto-Regular"),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format("woff2");unicode-range:U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB}
 @font-face{font-family:Roboto;font-style:normal;font-weight:400;src:local("Roboto"),local("Roboto-Regular"),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format("woff2");unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}
 @font-face{font-family:Roboto;font-style:normal;font-weight:400;src:local("Roboto"),local("Roboto-Regular"),url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-.form_item h2{font:normal 400 20px Roboto,sans-serif;color:#000;letter-spacing:0}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:100;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Thin.otf) format("opentype")}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:300;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.otf) format("opentype")}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf) format("opentype")}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Medium.otf) format("opentype")}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Bold.otf) format("opentype")}
+@font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:900;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.otf) format("opentype")}
+.form_item h2{font:normal 400 1.5rem Roboto,sans-serif;color:#000;letter-spacing:0}
 .form_item input{height:52px;background:#fff;border:2px solid #000;border-radius:8px}
-.form_item input::placeholder{font:normal 400 20px Roboto,sans-serif;color:#999;letter-spacing:0;text-align:left;line-height:24px}
+.form_item input::placeholder{font:normal 400 1.5rem Roboto,sans-serif;color:#999;letter-spacing:0;text-align:left;line-height:24px}
 .form_item input.form-control:focus{border-color:#5ab9e5;outline:0;-webkit-box-shadow:none;box-shadow:none}
-.form_btn{height:52px;border-radius:8px;font:normal 400 20px Roboto,sans-serif;color:#fff;text-align:center;line-height:25px}
+.form_btn{height:52px;border-radius:8px;font:normal 400 1.5rem Roboto,sans-serif;color:#fff;text-align:center;line-height:25px}
 .login{margin:48px 0}
-.login .title{font:normal 300 48px Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
+.login .title{font:normal 300 3rem Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
+.navbar_header{height:60px}
+.navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
+.navbar_header .menu_list{display:flex}
+.navbar_header .menu_item{margin:0 10px}
+.navbar_header .menu_item a{text-decoration:none;color:#00408B;font:normal 300 1.2rem "Noto Sans TC",sans-serif}
+.navbar_header .menu_item a.active{color:#fff}
 *,h1,h2,h3,h4{line-height:1;margin:0;padding:0;list-style:none}
 address,dl,ol,p,pre,ul{margin-bottom:0}
+.totoal_layout{height:100vh}

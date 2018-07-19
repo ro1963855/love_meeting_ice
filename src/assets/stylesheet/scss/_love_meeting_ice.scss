@@ -1,12 +1,17 @@
 // color
 $color-placholder: #999999;
+$color-brand: #e4007f;
+$color-notActive: #00408B;
 
 // font
-$font-title: normal 300 48px 'Roboto', sans-serif;
-$font-subtitle: normal 300 24px 'Roboto', sans-serif;
-$font-subtitle2: normal 300 16px 'Roboto', sans-serif;
-$font-form: normal 400 20px 'Roboto', sans-serif;
-$font-lable: normal 400 14px 'Roboto', sans-serif;
+$font-title: normal 300 3rem 'Roboto', sans-serif;
+$font-logo: normal bold 1.5rem 'Noto Sans TC', sans-serif;
+$font-subtitle: normal 300 1.2rem 'Noto Sans TC', sans-serif;
+$font-form: normal 400 1.5rem 'Roboto', sans-serif;
+$font-lable: normal 400 0.8rem 'Roboto', sans-serif;
 
 // form
 $form_height: 52px;
+
+// nvabar 
+$navbar-height: 60px;

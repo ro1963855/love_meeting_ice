@@ -1,10 +1,12 @@
 @import 'node_modules/bootstrap/scss/_functions';
 @import 'bootstrap_variables_customer';
 @import 'node_modules/bootstrap/scss/bootstrap';
+@import 'mixins';
 @import 'fonts';
 @import 'love_meeting_ice';
 @import 'components/Form';
 @import 'pages/Login';
+@import 'components/NavbarHeader';
 
 h1, h2, h3, h4, * {
   line-height: 1;
@@ -17,3 +19,8 @@ h1, h2, h3, h4, * {
 address, dl, ol, p, pre, ul {
   margin-bottom: 0;
 }
+
+.totoal_layout {
+  height: 100vh;
+}
+

@@ -1,0 +1,24 @@
+.navbar_header {
+  height: $navbar-height;
+  h1 {
+    color: $color-brand !important;
+    font: $font-logo;
+  }
+
+  .menu_list {
+    display: flex;
+  }
+  
+  .menu_item {
+    margin: 0 10px;
+    a {
+      @include a_unstyle();
+      color: $color-notActive;
+      font: $font-subtitle;
+      &.active {
+        color: $white;
+      }
+    }
+  }
+
+}
