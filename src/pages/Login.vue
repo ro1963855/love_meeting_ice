@@ -45,9 +45,6 @@ export default {
       },
     };
   },
-  created() {
-    this.isAlreadyLogin();
-  },
   mounted() {},
   computed: {
     isSubmitDisabled() {
@@ -55,18 +52,6 @@ export default {
     },
   },
   methods: {
-    isAlreadyLogin() {
-      const token = this.$session.get(this.sessionKey.token);
-      if (token) {
-        this.$http
-          .post('/api/account/isLogin', {}, { headers: { 'x-access-token': token } })
-          .then((response) => {
-            if (response.status === 200) {
-              this.$router.push({ name: 'Home' });
-            }
-          });
-      }
-    },
     sendLoginRequest() {
       const account = this.login.account;
       const password = this.login.password;
