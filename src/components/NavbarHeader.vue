@@ -33,14 +33,6 @@ export default {
           name: '其他',
           router: {},
         },
-        {
-          name: '其他',
-          router: {},
-        },
-        {
-          name: '其他',
-          router: {},
-        },
       ],
     };
   },

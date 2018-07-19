@@ -1,20 +1,12 @@
 <template>
-  <div class="home d-flex">
-    <casher/>
-    <product-menu/>
+  <div class="casher">
   </div>
 </template>
 
 <script>
-import Casher from '@/components/Casher';
-import ProductMenu from '@/components/ProductMenu';
-
 export default {
-  name: 'home',
-  components: {
-    Casher,
-    ProductMenu,
-  },
+  name: 'casher',
+  components: {},
   data() {
     return {};
   },

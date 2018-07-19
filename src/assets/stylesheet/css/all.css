@@ -6469,7 +6469,9 @@ a.text-dark:hover, a.text-dark:focus {
   height: 52px;
   background: #fff;
   border: 2px solid #000;
-  border-radius: 8px; }
+  border-radius: 8px;
+  font: normal 400 1.5rem "Roboto", sans-serif;
+  color: #999999; }
   .form_item input::placeholder {
     font: normal 400 1.5rem "Roboto", sans-serif;
     color: #999999;
@@ -6491,6 +6493,33 @@ a.text-dark:hover, a.text-dark:focus {
   text-align: center;
   line-height: 25px; }
 
+.casher {
+  height: 100%;
+  width: 300px; }
+
+.productMenu {
+  width: calc(100% - 300px);
+  background: #292929;
+  border-left: 2px solid #000; }
+  .productMenu > .product_category {
+    padding: 15px;
+    border-bottom: 2px solid #000;
+    height: 70px;
+    overflow: hidden; }
+    .productMenu > .product_category:hover {
+      cursor: grab; }
+    .productMenu > .product_category ol {
+      display: flex; }
+    .productMenu > .product_category li {
+      margin-right: 20px; }
+    .productMenu > .product_category a {
+      text-decoration: none;
+      white-space: nowrap;
+      color: #868488;
+      font: normal 300 1.5rem "Noto Sans TC", sans-serif; }
+      .productMenu > .product_category a.active {
+        color: #fff; }
+
 .login {
   margin: 48px 0; }
   .login .title {
@@ -6506,6 +6535,10 @@ a.text-dark:hover, a.text-dark:focus {
     margin-top: 16px;
     color: #fff; }
 
+.home {
+  height: calc(100% - 60px);
+  width: 100%; }
+
 .navbar_header {
   height: 60px; }
   .navbar_header h1 {
@@ -6518,9 +6551,12 @@ a.text-dark:hover, a.text-dark:focus {
     .navbar_header .menu_item a {
       text-decoration: none;
       color: #00408B;
-      font: normal 300 1.2rem "Noto Sans TC", sans-serif; }
+      font: normal 300 1.5rem "Noto Sans TC", sans-serif; }
       .navbar_header .menu_item a.active {
         color: #fff; }
+
+body {
+  min-width: 736px; }
 
 h1, h2, h3, h4, * {
   line-height: 1;

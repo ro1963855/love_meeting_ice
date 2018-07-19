@@ -5,8 +5,15 @@
 @import 'fonts';
 @import 'love_meeting_ice';
 @import 'components/Form';
+@import 'components/Casher';
+@import 'components/ProductMenu';
 @import 'pages/Login';
+@import 'pages/Home';
 @import 'components/NavbarHeader';
+
+body {
+  min-width: 736px;
+}
 
 h1, h2, h3, h4, * {
   line-height: 1;

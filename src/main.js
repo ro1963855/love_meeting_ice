@@ -11,6 +11,7 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
 import VueSession from 'vue-session';
+import VueDragscroll from 'vue-dragscroll';
 import './assets/stylesheet/build/all.min.css';
 import App from './App';
 import router from './router';
@@ -23,6 +24,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(VueSession, { persist: true });
+Vue.use(VueDragscroll);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
