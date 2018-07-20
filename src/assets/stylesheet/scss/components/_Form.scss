@@ -11,7 +11,7 @@
     border: 2px solid $black;
     border-radius: 8px;
     font: $font-form;
-    color: $color-placholder;
+    color: $black;
     &::placeholder { 
       font: $font-form;
       color: $color-placholder;
@@ -21,6 +21,7 @@
     }
 
     &.form-control:focus {
+      color: $black;
       border-color: $primary;
       outline: 0;
       -webkit-box-shadow: none;

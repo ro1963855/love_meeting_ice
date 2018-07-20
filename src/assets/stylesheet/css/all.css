@@ -6471,7 +6471,7 @@ a.text-dark:hover, a.text-dark:focus {
   border: 2px solid #000;
   border-radius: 8px;
   font: normal 400 1.5rem "Roboto", sans-serif;
-  color: #999999; }
+  color: #000; }
   .form_item input::placeholder {
     font: normal 400 1.5rem "Roboto", sans-serif;
     color: #999999;
@@ -6479,6 +6479,7 @@ a.text-dark:hover, a.text-dark:focus {
     text-align: left;
     line-height: 24px; }
   .form_item input.form-control:focus {
+    color: #000;
     border-color: #5ab9e5;
     outline: 0;
     -webkit-box-shadow: none;
