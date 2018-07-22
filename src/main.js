@@ -16,6 +16,7 @@ import VueLodash from 'vue-lodash';
 import './assets/stylesheet/build/all.min.css';
 import App from './App';
 import router from './router';
+import store from './store/index';
 
 library.add(fas);
 library.add(far);
@@ -33,6 +34,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>',
 });

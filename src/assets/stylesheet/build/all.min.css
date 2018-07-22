@@ -832,6 +832,7 @@ a.btn.disabled,fieldset:disabled a.btn{pointer-events:none}
 .page-item:last-child .page-link{border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}
 .page-item.active .page-link{z-index:1;color:#fff;background-color:#5ab9e5;border-color:#5ab9e5}
 .page-item.disabled .page-link{color:#6c757d;pointer-events:none;cursor:auto;background-color:#fff;border-color:#dee2e6}
+.close:not(:disabled):not(.disabled),.product{cursor:pointer}
 .pagination-lg .page-link{padding:.75rem 1.5rem;font-size:1.25rem;line-height:1.5}
 .pagination-lg .page-item:first-child .page-link{border-top-left-radius:.3rem;border-bottom-left-radius:.3rem}
 .pagination-lg .page-item:last-child .page-link{border-top-right-radius:.3rem;border-bottom-right-radius:.3rem}
@@ -944,7 +945,6 @@ to{background-position:0 0}
 .popover,.tooltip{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-style:normal;font-weight:400;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;white-space:normal;line-break:auto;font-size:.875rem;word-wrap:break-word;text-decoration:none}
 .modal-title,.popover,.tooltip{line-height:1.5}
 .popover,.text-hide,.tooltip{text-shadow:none}
-.close:not(:disabled):not(.disabled){cursor:pointer}
 .close:not(:disabled):not(.disabled):focus,.close:not(:disabled):not(.disabled):hover{color:#000;text-decoration:none;opacity:.75}
 button.close{padding:0;background-color:transparent;border:0;-webkit-appearance:none}
 .modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;display:none;outline:0}
@@ -1783,7 +1783,7 @@ h2,h3{page-break-after:avoid}
 .table .thead-dark th{color:inherit;border-color:#dee2e6}
 }
 .navbar_header .menu_list,.productMenu>.product_category ol{display:flex}
-.form_item h2,.form_item input{color:#000;font:normal 400 1.5rem Roboto,sans-serif}
+.form_item h2,.form_item input{color:#000;font:normal 400 1.5rem "Noto Sans TC",sans-serif}
 @font-face{font-family:Roboto;font-style:normal;font-weight:300;src:local("Roboto Light"),local("Roboto-Light"),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2) format("woff2");unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
 @font-face{font-family:Roboto;font-style:normal;font-weight:300;src:local("Roboto Light"),local("Roboto-Light"),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2) format("woff2");unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:Roboto;font-style:normal;font-weight:300;src:local("Roboto Light"),local("Roboto-Light"),url(https://fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2) format("woff2");unicode-range:U+1F00-1FFF}
@@ -1806,27 +1806,31 @@ h2,h3{page-break-after:avoid}
 @font-face{font-family:'Noto Sans TC';font-style:normal;font-weight:900;src:url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2) format("woff2"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff) format("woff"),url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.otf) format("opentype")}
 .form_item h2{letter-spacing:0}
 .form_item input{height:52px;background:#fff;border:2px solid #000;border-radius:8px}
-.form_item input::placeholder{font:normal 400 1.5rem Roboto,sans-serif;color:#999;letter-spacing:0;text-align:left;line-height:24px}
+.form_item input::placeholder{font:normal 400 1.5rem "Noto Sans TC",sans-serif;color:#999;letter-spacing:0;text-align:left;line-height:24px}
 .form_item input.form-control:focus{color:#000;border-color:#5ab9e5;outline:0;-webkit-box-shadow:none;box-shadow:none}
-.form_btn{height:52px;border-radius:8px;font:normal 400 1.5rem Roboto,sans-serif;color:#fff;text-align:center;line-height:25px}
+.form_btn{height:52px;border-radius:8px;font:normal 400 1.5rem "Noto Sans TC",sans-serif;color:#fff;text-align:center;line-height:25px}
 .casher{height:100%;width:300px}
+.product{height:200px;position:relative;margin-bottom:20px}
+.product>.desc{padding:10px 10px 0;width:100%;background-color:#413a3a;position:absolute;bottom:0;font:normal 400 .8rem "Noto Sans TC",sans-serif;color:#fff;opacity:.9}
+.product>.desc h2{margin-bottom:10px}
 .productMenu{width:calc(100% - 300px);background:#292929;border-left:2px solid #000}
 .productMenu>.product_category{padding:15px;border-bottom:2px solid #000;height:70px;overflow:hidden}
-.productMenu>.product_category:hover{cursor:grab}
 .productMenu>.product_category li{margin-right:20px}
 .productMenu>.product_category a{text-decoration:none;white-space:nowrap;color:#868488;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
 .productMenu>.product_category a.active{color:#fff}
+.productMenu>.product_list{height:calc(100% - 70px);padding:20px 0;overflow:hidden}
+.productMenu .dragable:hover{cursor:grab}
+.navbar_header{height:60px}
+.navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
+.navbar_header .menu_item{margin:0 10px}
+.navbar_header .menu_item a{text-decoration:none;color:#00408B;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
+.navbar_header .menu_item a.active{color:#fff}
 .login{margin:48px 0}
 .login .title{font:normal 300 3rem Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
 .home{height:calc(100% - 60px);width:100%}
-.navbar_header{height:60px}
-.navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
-.navbar_header .menu_item{margin:0 10px}
-.navbar_header .menu_item a{text-decoration:none;color:#00408B;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
-.navbar_header .menu_item a.active{color:#fff}
 body{min-width:736px}
 *,h1,h2,h3,h4{line-height:1;margin:0;padding:0;list-style:none}
 address,dl,ol,p,pre,ul{margin-bottom:0}

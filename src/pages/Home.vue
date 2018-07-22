@@ -18,7 +18,9 @@ export default {
   data() {
     return {};
   },
-  created() {},
+  created() {
+    this.$store.dispatch('Menu_READ');
+  },
   mounted() {},
   computed: {
     // variable() {},

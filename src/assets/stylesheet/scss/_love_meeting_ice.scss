@@ -4,13 +4,14 @@ $color-brand: #e4007f;
 $color-header-notActive: #00408B;
 $color-product-notActive: #868488;
 $color-product-bg: #292929;
+$color-product-desc: #413a3a;
 
 // font
 $font-title: normal 300 3rem 'Roboto', sans-serif;
 $font-logo: normal bold 1.5rem 'Noto Sans TC', sans-serif;
 $font-subtitle: normal 300 1.5rem 'Noto Sans TC', sans-serif;
-$font-form: normal 400 1.5rem 'Roboto', sans-serif;
-$font-lable: normal 400 0.8rem 'Roboto', sans-serif;
+$font-form: normal 400 1.5rem 'Noto Sans TC', sans-serif;
+$font-lable: normal 400 0.8rem 'Noto Sans TC', sans-serif;
 
 // form
 $form_height: 52px;
@@ -20,3 +21,6 @@ $navbar-height: 60px;
 
 // sidebar
 $sidebar-width: 300px;
+
+// body
+$body-header: 70px;

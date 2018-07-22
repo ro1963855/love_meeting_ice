@@ -1,70 +1,50 @@
 <template>
   <div class="productMenu container-fluid">
-    <div class="product_category row" v-dragscroll.x="true">
-      <ol>
-        <li v-for="(category, categoryId) in menu" v-bind:key="categoryId">
+    <div class="product_category row dragable" v-dragscroll.x="true">
+      <ol v-if="mainDish">
+        <li v-for="(category, categoryId) in mainDish"
+            v-bind:key="categoryId">
           <a href="javascript:;"
               :class="{active: active == categoryId}"
               @click="active = categoryId">{{ category.categoryName }}</a>
         </li>
       </ol>
     </div>
-    <!-- <div class="row product_list">
-
-    </div> -->
+    <div class="product_list dragable" v-if="mainDish" v-dragscroll.y="true">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 col-xl-3"
+              v-for="(product, productIndex) in mainDish[active].products"
+              v-bind:key="productIndex">
+        <product v-bind:product="product"></product>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Product from '@/components/Product';
+
 export default {
   name: 'productMenu',
-  components: {},
+  components: {
+    Product,
+  },
   data() {
     return {
       active: 1,
-      menu: null,
     };
   },
-  created() {
-    this.getMenu();
-  },
+  created() {},
   mounted() {},
   computed: {
-    // variable() {},
+    mainDish() {
+      return this.$store.state.menu.mainDish;
+    },
   },
   watch: {
     // variable(new, old) {}
   },
-  methods: {
-    getMenu() {
-      const vm = this;
-      this.$http.get('/api/menu')
-        .then((response) => {
-          if (response.status === 200) {
-            vm.menu = vm.reArrangeMenu(response.data);
-          }
-        });
-    },
-    reArrangeMenu(menus) {
-      const menuReArrange = {};
-      this._.forEach(menus, (product) => {
-        if (!menuReArrange[product.categoryId]) {
-          menuReArrange[product.categoryId] = [];
-          menuReArrange[product.categoryId] = {
-            categoryName: product.category.categoryName,
-            product: [],
-          };
-        }
-
-        menuReArrange[product.categoryId].product.push({
-          productsName: product.productsName,
-          price: product.price,
-          state: product.state.stateName,
-        });
-      });
-
-      return menuReArrange;
-    },
-  },
+  methods: {},
 };
 </script>

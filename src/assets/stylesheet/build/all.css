@@ -6461,7 +6461,7 @@ a.text-dark:hover, a.text-dark:focus {
   src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff2) format("woff2"), url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.woff) format("woff"), url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Black.otf) format("opentype"); }
 
 .form_item h2 {
-  font: normal 400 1.5rem "Roboto", sans-serif;
+  font: normal 400 1.5rem "Noto Sans TC", sans-serif;
   color: #000;
   letter-spacing: 0; }
 
@@ -6470,10 +6470,10 @@ a.text-dark:hover, a.text-dark:focus {
   background: #fff;
   border: 2px solid #000;
   border-radius: 8px;
-  font: normal 400 1.5rem "Roboto", sans-serif;
+  font: normal 400 1.5rem "Noto Sans TC", sans-serif;
   color: #000; }
   .form_item input::placeholder {
-    font: normal 400 1.5rem "Roboto", sans-serif;
+    font: normal 400 1.5rem "Noto Sans TC", sans-serif;
     color: #999999;
     letter-spacing: 0;
     text-align: left;
@@ -6489,7 +6489,7 @@ a.text-dark:hover, a.text-dark:focus {
   height: 52px;
   border-radius: 8px;
   font-size: 20px;
-  font: normal 400 1.5rem "Roboto", sans-serif;
+  font: normal 400 1.5rem "Noto Sans TC", sans-serif;
   color: #fff;
   text-align: center;
   line-height: 25px; }
@@ -6497,6 +6497,23 @@ a.text-dark:hover, a.text-dark:focus {
 .casher {
   height: 100%;
   width: 300px; }
+
+.product {
+  height: 200px;
+  position: relative;
+  margin-bottom: 20px;
+  cursor: pointer; }
+  .product > .desc {
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    background-color: #413a3a;
+    position: absolute;
+    bottom: 0;
+    font: normal 400 0.8rem "Noto Sans TC", sans-serif;
+    color: #fff;
+    opacity: 0.9; }
+    .product > .desc h2 {
+      margin-bottom: 10px; }
 
 .productMenu {
   width: calc(100% - 300px);
@@ -6507,8 +6524,6 @@ a.text-dark:hover, a.text-dark:focus {
     border-bottom: 2px solid #000;
     height: 70px;
     overflow: hidden; }
-    .productMenu > .product_category:hover {
-      cursor: grab; }
     .productMenu > .product_category ol {
       display: flex; }
     .productMenu > .product_category li {
@@ -6519,6 +6534,28 @@ a.text-dark:hover, a.text-dark:focus {
       color: #868488;
       font: normal 300 1.5rem "Noto Sans TC", sans-serif; }
       .productMenu > .product_category a.active {
+        color: #fff; }
+  .productMenu > .product_list {
+    height: calc(100% - 70px);
+    padding: 20px 0;
+    overflow: hidden; }
+  .productMenu .dragable:hover {
+    cursor: grab; }
+
+.navbar_header {
+  height: 60px; }
+  .navbar_header h1 {
+    color: #e4007f !important;
+    font: normal bold 1.5rem "Noto Sans TC", sans-serif; }
+  .navbar_header .menu_list {
+    display: flex; }
+  .navbar_header .menu_item {
+    margin: 0 10px; }
+    .navbar_header .menu_item a {
+      text-decoration: none;
+      color: #00408B;
+      font: normal 300 1.5rem "Noto Sans TC", sans-serif; }
+      .navbar_header .menu_item a.active {
         color: #fff; }
 
 .login {
@@ -6539,22 +6576,6 @@ a.text-dark:hover, a.text-dark:focus {
 .home {
   height: calc(100% - 60px);
   width: 100%; }
-
-.navbar_header {
-  height: 60px; }
-  .navbar_header h1 {
-    color: #e4007f !important;
-    font: normal bold 1.5rem "Noto Sans TC", sans-serif; }
-  .navbar_header .menu_list {
-    display: flex; }
-  .navbar_header .menu_item {
-    margin: 0 10px; }
-    .navbar_header .menu_item a {
-      text-decoration: none;
-      color: #00408B;
-      font: normal 300 1.5rem "Noto Sans TC", sans-serif; }
-      .navbar_header .menu_item a.active {
-        color: #fff; }
 
 body {
   min-width: 736px; }

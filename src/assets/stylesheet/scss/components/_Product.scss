@@ -1,0 +1,19 @@
+.product {
+  height: 200px;
+  position: relative;
+  margin-bottom: 20px;
+  cursor: pointer;
+  > .desc {
+    padding: 10px 10px 0 10px;
+    width: 100%;
+    background-color: $color-product-desc;
+    position: absolute;
+    bottom: 0;
+    font: $font-lable;
+    color: $white;
+    opacity: 0.9;
+    h2 {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -6,10 +6,11 @@
 @import 'love_meeting_ice';
 @import 'components/Form';
 @import 'components/Casher';
+@import 'components/Product';
 @import 'components/ProductMenu';
+@import 'components/NavbarHeader';
 @import 'pages/Login';
 @import 'pages/Home';
-@import 'components/NavbarHeader';
 
 body {
   min-width: 736px;

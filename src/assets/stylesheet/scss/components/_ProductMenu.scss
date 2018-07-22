@@ -5,11 +5,8 @@
   > .product_category {
     padding: 15px;
     border-bottom: 2px solid $black;
-    height: 70px;
+    height: $body-header;
     overflow: hidden;
-    &:hover {
-      cursor: grab;
-    }
 
     ol {
       display: flex;
@@ -27,6 +24,18 @@
       &.active {
         color: $white;
       }
+    }
+  }
+
+  > .product_list {
+    height: calc(100% - #{$body-header});
+    padding: 20px 0;
+    overflow: hidden;
+  }
+
+  .dragable {
+    &:hover {
+      cursor: grab;
     }
   }
 }
