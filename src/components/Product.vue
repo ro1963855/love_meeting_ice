@@ -33,7 +33,7 @@ export default {
   methods: {
     // foo() {},
     addProduct(product) {
-      this.$store.dispatch('BILL_ADD', product);
+      this.$store.dispatch('ORDER_ADD', product);
     },
   },
 };

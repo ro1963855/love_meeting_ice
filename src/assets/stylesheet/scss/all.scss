@@ -9,6 +9,8 @@
 @import 'components/Product';
 @import 'components/ProductMenu';
 @import 'components/NavbarHeader';
+@import 'components/CasherList';
+@import 'components/OrderSetting';
 @import 'pages/Login';
 @import 'pages/Home';
 
@@ -32,3 +34,10 @@ address, dl, ol, p, pre, ul {
   height: 100vh;
 }
 
+.w-half {
+  width: 50%;
+}
+
+.w-full {
+  width: 100%;
+}

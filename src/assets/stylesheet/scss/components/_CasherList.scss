@@ -1,0 +1,69 @@
+.orderList, .billList {
+  > .order, >.bill {
+    height: 100%;
+    background-color: $color-casher-bg;
+    border-bottom: 2px solid $color-casher-border;
+  }
+
+  > footer {
+    height: $body-header;
+    width: 100%;
+    background-color: $color-casher-bg;
+    ol {
+      height: 100%;
+      display: flex;
+      padding: 5px;
+      list-style-type: decimal;
+    }
+
+    a {
+      @include a_unstyle();
+      font: $font-subtitle;
+      color: $color-casher-placholder;
+    }
+
+    li {
+      @include flex_center_center();
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid $color-casher-border;
+      list-style-type: decimal;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+}
+
+.order_product {
+  height: 80px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid $color-casher-border;
+  > .order_desc {
+    h3 {
+      font: $font-form;
+    }
+  }
+
+  > .order_number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h4 {
+      font: $font-product-title;
+    }
+  }
+
+  
+}
+
+.orderSetting {
+  position: absolute;
+  top: 0;
+  left: $sidebar-width + 15px;
+  z-index: 10;
+  opacity: 0.9;
+}

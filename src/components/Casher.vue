@@ -10,34 +10,23 @@
         </li>
       </ol>
     </header>
-    <div class="bill">
-      <ol>
-        <li v-for="(product, index) in bill" :key="index">{{ product.productName }}</li>
-      </ol>
+    <div class="casher_container">
+      <order-list v-if="selectedTab === 0"></order-list>
+      <bill-list v-else></bill-list>
     </div>
-    <footer>
-      <ol>
-        <li :class="{'w-half': selectedTab === 0, 'd-none': selectedTab === 1}">
-          <a href="javascript:">
-            <font-awesome-icon :icon="['far', 'list-alt']"></font-awesome-icon>
-            <span>送出</span>
-          </a>
-        </li>
-        <li :class="{'w-half': selectedTab === 0, 'w-full': selectedTab === 1}">
-          <a href="javascript:">
-            <font-awesome-icon :icon="['fas', 'money-bill']"></font-awesome-icon>
-            <span>結帳</span>
-          </a>
-        </li>
-      </ol>
-    </footer>
   </div>
 </template>
 
 <script>
+import OrderList from '@/components/OrderList';
+import BillList from '@/components/BillList';
+
 export default {
   name: 'casher',
-  components: {},
+  components: {
+    BillList,
+    OrderList,
+  },
   data() {
     return {
       selectedTab: 0,
@@ -53,11 +42,7 @@ export default {
   },
   created() {},
   mounted() {},
-  computed: {
-    bill() {
-      return this.$store.state.bill.data;
-    },
-  },
+  computed: {},
   watch: {
     // variable(new, old) {}
   },

@@ -6520,35 +6520,8 @@ a.text-dark:hover, a.text-dark:focus {
         color: #fff; }
       .casher > header li:last-child {
         border-right: 0; }
-  .casher > .bill {
-    height: calc(100% - 140px);
-    background-color: #fff7fd;
-    border-bottom: 2px solid #cebebe; }
-  .casher > footer {
-    height: 70px;
-    width: 100%;
-    background-color: #fff7fd; }
-    .casher > footer ol {
-      height: 100%;
-      display: flex;
-      padding: 5px; }
-    .casher > footer a {
-      text-decoration: none;
-      font: normal 300 1.5rem "Noto Sans TC", sans-serif;
-      color: #d5624b; }
-    .casher > footer li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      height: 100%;
-      border-right: 2px solid #cebebe; }
-      .casher > footer li:last-child {
-        border-right: 0; }
-  .casher .w-half {
-    width: 50%; }
-  .casher .w-full {
-    width: 100%; }
+  .casher > .casher_container {
+    height: calc(100% - 140px); }
 
 .product {
   height: 200px;
@@ -6612,6 +6585,69 @@ a.text-dark:hover, a.text-dark:focus {
       .navbar_header .menu_item a.active {
         color: #fff; }
 
+.orderList > .order, .orderList > .bill, .billList > .order, .billList > .bill {
+  height: 100%;
+  background-color: #fff7fd;
+  border-bottom: 2px solid #cebebe; }
+
+.orderList > footer, .billList > footer {
+  height: 70px;
+  width: 100%;
+  background-color: #fff7fd; }
+  .orderList > footer ol, .billList > footer ol {
+    height: 100%;
+    display: flex;
+    padding: 5px;
+    list-style-type: decimal; }
+  .orderList > footer a, .billList > footer a {
+    text-decoration: none;
+    font: normal 300 1.5rem "Noto Sans TC", sans-serif;
+    color: #d5624b; }
+  .orderList > footer li, .billList > footer li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    border-right: 2px solid #cebebe;
+    list-style-type: decimal; }
+    .orderList > footer li:last-child, .billList > footer li:last-child {
+      border-right: 0; }
+
+.order_product {
+  height: 80px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #cebebe; }
+  .order_product > .order_desc h3 {
+    font: normal 400 1.5rem "Noto Sans TC", sans-serif; }
+  .order_product > .order_number {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .order_product > .order_number h4 {
+      font: normal 400 1.2rem "Noto Sans TC", sans-serif; }
+
+.orderSetting {
+  position: absolute;
+  top: 0;
+  left: 315px;
+  z-index: 10;
+  opacity: 0.9; }
+
+.orderSetting {
+  width: 300px;
+  height: 100%;
+  background-color: #d6d6d6;
+  border-radius: 10px; }
+  .orderSetting .header {
+    font: normal 400 1.5rem "Noto Sans TC", sans-serif;
+    text-align: center;
+    padding: 10px 10px 5px 10px;
+    border-bottom: 2px solid #868488; }
+
 .login {
   margin: 48px 0; }
   .login .title {
@@ -6645,3 +6681,9 @@ address, dl, ol, p, pre, ul {
 
 .totoal_layout {
   height: 100vh; }
+
+.w-half {
+  width: 50%; }
+
+.w-full {
+  width: 100%; }
