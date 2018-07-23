@@ -6497,6 +6497,58 @@ a.text-dark:hover, a.text-dark:focus {
 .casher {
   height: 100%;
   width: 300px; }
+  .casher > header {
+    height: 70px;
+    width: 100%;
+    background: #fd6d52; }
+    .casher > header ol {
+      height: 100%;
+      display: flex;
+      padding: 5px; }
+    .casher > header a {
+      text-decoration: none;
+      font: normal 300 1.5rem "Noto Sans TC", sans-serif;
+      color: #d5624b; }
+    .casher > header li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid #d5624b; }
+      .casher > header li.active a {
+        color: #fff; }
+      .casher > header li:last-child {
+        border-right: 0; }
+  .casher > .bill {
+    height: calc(100% - 140px);
+    background-color: #fff7fd;
+    border-bottom: 2px solid #cebebe; }
+  .casher > footer {
+    height: 70px;
+    width: 100%;
+    background-color: #fff7fd; }
+    .casher > footer ol {
+      height: 100%;
+      display: flex;
+      padding: 5px; }
+    .casher > footer a {
+      text-decoration: none;
+      font: normal 300 1.5rem "Noto Sans TC", sans-serif;
+      color: #d5624b; }
+    .casher > footer li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid #cebebe; }
+      .casher > footer li:last-child {
+        border-right: 0; }
+  .casher .w-half {
+    width: 50%; }
+  .casher .w-full {
+    width: 100%; }
 
 .product {
   height: 200px;
@@ -6524,6 +6576,8 @@ a.text-dark:hover, a.text-dark:focus {
     border-bottom: 2px solid #000;
     height: 70px;
     overflow: hidden; }
+    .productMenu > .product_category:hover {
+      cursor: grab; }
     .productMenu > .product_category ol {
       display: flex; }
     .productMenu > .product_category li {

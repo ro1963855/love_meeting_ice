@@ -1,4 +1,78 @@
 .casher {
   height: 100%;
   width: $sidebar-width;
+  > header {
+    height: 70px;
+    width: 100%;
+    background: $color-casher-primary;
+    ol {
+      height: 100%;
+      display: flex;
+      padding: 5px;
+    }
+
+    a {
+      @include a_unstyle();
+      font: $font-subtitle;
+      color: $color-casher-placholder;
+    }
+
+    li {
+      @include flex_center_center();
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid $color-casher-placholder;
+      &.active {
+        a {
+          color: $white;
+        }
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+  
+  > .bill {
+    height: calc(100% - 140px);
+    background-color: $color-casher-bg;
+    border-bottom: 2px solid $color-casher-border;
+  }
+
+  > footer {
+    height: 70px;
+    width: 100%;
+    background-color: $color-casher-bg;
+    ol {
+      height: 100%;
+      display: flex;
+      padding: 5px;
+    }
+
+    a {
+      @include a_unstyle();
+      font: $font-subtitle;
+      color: $color-casher-placholder;
+    }
+
+    li {
+      @include flex_center_center();
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid $color-casher-border;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+  }
+
+  .w-half {
+    width: 50%;
+  }
+  
+  .w-full {
+    width: 100%;
+  }
+
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="product">
+  <div class="product" @click="addProduct(product)">
     <img src="@/assets/img/products/花生豆花.jpeg" class="w-100 h-100">
     <div class="desc">
       <h2 class="price">${{ product.price }}</h2>
@@ -32,6 +32,9 @@ export default {
   },
   methods: {
     // foo() {},
+    addProduct(product) {
+      this.$store.dispatch('BILL_ADD', product);
+    },
   },
 };
 </script>

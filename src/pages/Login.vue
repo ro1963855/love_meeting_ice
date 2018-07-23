@@ -64,6 +64,8 @@ export default {
           } else {
             alert('Login failed');
           }
+        }).catch(() => {
+          alert('Login failed');
         });
     },
   },

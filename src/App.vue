@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view v-if="isLoginLayout"/>
-    <div v-if="!isLoginLayout" class="totoal_layout">
+    <div class="totoal_layout" v-else>
       <navbar-header/>
       <router-view/>
     </div>
@@ -10,6 +10,7 @@
 
 <script>
 import NavbarHeader from '@/components/NavbarHeader';
+import config from '@/assets/config';
 
 export default {
   name: 'App',
@@ -31,6 +32,10 @@ export default {
   },
   methods: {
     isAlreadyLogin() {
+      if (!config.auth) {
+        return;
+      }
+
       const token = this.$session.get('token');
       if (token) {
         this.$http
