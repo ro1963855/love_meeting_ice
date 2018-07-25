@@ -1,6 +1,6 @@
 <template>
   <div class="productMenu container-fluid">
-    <div class="product_category row dragable" v-dragscroll.x="true">
+    <div class="product_category row" v-dragscroll.x="true">
       <ol v-if="mainDish">
         <li v-for="(category, categoryId) in mainDish"
             v-bind:key="categoryId">
@@ -10,7 +10,7 @@
         </li>
       </ol>
     </div>
-    <div class="product_list dragable" v-if="mainDish" v-dragscroll.y="true">
+    <div class="product_list" v-if="mainDish" v-dragscroll.y="true">
       <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-3"
               v-for="(product, productIndex) in mainDish[active].products"

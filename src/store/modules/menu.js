@@ -13,6 +13,7 @@ export default {
       const sideDish = [];
       _.forEach(menu, (product) => {
         const dish = {
+          id: product.id,
           productName: product.productsName,
           price: product.price,
           state: product.state.stateName,

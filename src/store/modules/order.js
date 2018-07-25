@@ -19,6 +19,9 @@ export default {
     cleanOrder(state) {
       state.data = [];
     },
+    removeOrderByIndex(state, index) {
+      state.data.splice(index, 1);
+    },
   },
   actions: {
     ORDER_ADD: (context, product) => {
@@ -26,6 +29,9 @@ export default {
     },
     ORDER_CLEAN: (context) => {
       context.commit('cleanOrder');
+    },
+    ORDER_REMOVE_BY_INDEX: (context, index) => {
+      context.commit('removeOrderByIndex', index);
     },
   },
 };

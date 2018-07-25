@@ -3,6 +3,7 @@
     height: 100%;
     background-color: $color-casher-bg;
     border-bottom: 2px solid $color-casher-border;
+    overflow: hidden;
   }
 
   > footer {
@@ -35,16 +36,22 @@
   }
 }
 
-.order_product {
+.order_product > a {
   height: 80px;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid $color-casher-border;
+  color: $black;
+  @include a_unstyle();
   > .order_desc {
     h3 {
       font: $font-form;
+    }
+
+    h4 {
+      font: $font-lable;
     }
   }
 

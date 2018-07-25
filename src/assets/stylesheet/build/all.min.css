@@ -1818,11 +1818,11 @@ h2,h3{page-break-after:avoid}
 .casher>.casher_container{height:calc(100% - 140px)}
 .product{height:200px;position:relative;margin-bottom:20px}
 .orderSetting,.product>.desc{position:absolute;opacity:.9}
-.productMenu .dragable:hover,.productMenu>.product_category:hover{cursor:grab}
 .product>.desc{padding:10px 10px 0;width:100%;background-color:#413a3a;bottom:0;font:normal 400 .8rem "Noto Sans TC",sans-serif;color:#fff}
 .product>.desc h2{margin-bottom:10px}
 .productMenu{width:calc(100% - 300px);background:#292929;border-left:2px solid #000}
 .productMenu>.product_category{padding:15px;border-bottom:2px solid #000;height:70px;overflow:hidden}
+.productMenu>.product_category:hover{cursor:grab}
 .productMenu>.product_category ol{display:flex}
 .productMenu>.product_category li{margin-right:20px}
 .productMenu>.product_category a{text-decoration:none;white-space:nowrap;color:#868488;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
@@ -1830,25 +1830,36 @@ h2,h3{page-break-after:avoid}
 .productMenu>.product_list{height:calc(100% - 70px);padding:20px 0;overflow:hidden}
 .navbar_header{height:60px}
 .navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
-.billList>footer a,.navbar_header .menu_item a,.orderList>footer a{text-decoration:none;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
+.billList>footer a,.navbar_header .menu_item a,.orderList>footer a{font:normal 300 1.5rem "Noto Sans TC",sans-serif;text-decoration:none}
 .navbar_header .menu_list{display:flex}
 .navbar_header .menu_item{margin:0 10px}
 .navbar_header .menu_item a{color:#00408B}
 .navbar_header .menu_item a.active{color:#fff}
-.billList>.bill,.billList>.order,.orderList>.bill,.orderList>.order{height:100%;background-color:#fff7fd;border-bottom:2px solid #cebebe}
+.billList>.bill,.billList>.order,.orderList>.bill,.orderList>.order{height:100%;background-color:#fff7fd;border-bottom:2px solid #cebebe;overflow:hidden}
 .billList>footer,.orderList>footer{height:70px;width:100%;background-color:#fff7fd}
 .billList>footer ol,.orderList>footer ol{height:100%;display:flex;padding:5px;list-style-type:decimal}
 .billList>footer a,.orderList>footer a{color:#d5624b}
+.login .title,.orderSetting .quantity>a,.orderSetting .total_quantity>a,.orderSetting>footer>.action>a{color:#000}
 .billList>footer li,.orderList>footer li{display:flex;align-items:center;justify-content:center;cursor:pointer;height:100%;border-right:2px solid #cebebe;list-style-type:decimal}
 .billList>footer li:last-child,.orderList>footer li:last-child{border-right:0}
-.order_product{height:80px;padding:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #cebebe}
-.order_product>.order_desc h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
-.order_product>.order_number{display:flex;flex-direction:column;align-items:center}
-.order_product>.order_number h4{font:normal 400 1.2rem "Noto Sans TC",sans-serif}
+.order_product>a{height:80px;padding:15px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #cebebe;color:#000;text-decoration:none}
+.order_product>a>.order_desc h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
+.order_product>a>.order_desc h4{font:normal 400 .8rem "Noto Sans TC",sans-serif}
+.order_product>a>.order_number{display:flex;flex-direction:column;align-items:center}
+.order_product>a>.order_number h4{font:normal 400 1.2rem "Noto Sans TC",sans-serif}
 .orderSetting{top:0;left:315px;z-index:10;width:300px;height:100%;background-color:#d6d6d6;border-radius:10px}
-.orderSetting .header{font:normal 400 1.5rem "Noto Sans TC",sans-serif;text-align:center;padding:10px 10px 5px;border-bottom:2px solid #868488}
+.orderSetting .header{font:normal 400 1.5rem "Noto Sans TC",sans-serif;text-align:center;padding:8px 10px;border-bottom:2px solid #868488;height:50px}
+.orderSetting>.content{padding:5px 0;height:calc(100% - 50px - 140px);overflow:hidden;border-bottom:2px solid #868488}
+.orderSetting>.content .sideDish{padding:5px 15px;font:normal 400 1.2rem "Noto Sans TC",sans-serif}
+.orderSetting .quantity{display:flex;align-items:center;justify-content:center}
+.orderSetting .quantity>*{margin-left:15px}
+.orderSetting>footer{height:140px}
+.orderSetting .total_quantity,.orderSetting>footer>.action{display:flex;height:70px;font:normal 400 1.5rem "Noto Sans TC",sans-serif}
+.orderSetting>footer>.action{align-items:center;justify-content:center}
+.orderSetting>footer>.action>*{margin-right:10px}
+.orderSetting .total_quantity{justify-content:space-around;align-items:center;border-bottom:2px solid #868488}
 .login{margin:48px 0}
-.login .title{font:normal 300 3rem Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
+.login .title{font:normal 300 3rem Roboto,sans-serif;text-align:center;margin-bottom:40px}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
@@ -1859,3 +1870,4 @@ address,dl,ol,p,pre,ul{margin-bottom:0}
 .totoal_layout{height:100vh}
 .w-half{width:50%}
 .w-full{width:100%}
+.dragable:hover{cursor:grab}

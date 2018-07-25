@@ -1,17 +1,20 @@
 <template>
   <div class="orderList h-100 position-relative">
-    <div class="order">
+    <div class="order" v-dragscroll.y="true">
       <ol>
         <li v-for="(product, index) in order" :key="index"
-            class="order_product">
-            <span>
+            class="order_product"
+            @click="openOrCloseOrderSetting(index)">
+          <a href="javascrip:" class="w-100 h-100">
+            <span class="order_desc">
               <h3>{{ product.mainDish.product.productName }}</h3>
-              <h4></h4>
+              <h4>{{ getSideDishDesc(index) }}</h4>
             </span>
             <span class="order_number">
               <h3>{{ product.mainDish.number }}</h3>
               <h4>${{ product.totalCost }}</h4>
             </span>
+          </a>
         </li>
       </ol>
     </div>
@@ -31,7 +34,7 @@
         </li>
       </ol>
     </footer>
-    <order-setting :product="order[selectedProduct]"></order-setting>
+    <order-setting :product.sync="order[selectedProduct]"></order-setting>
   </div>
 </template>
 
@@ -45,7 +48,7 @@ export default {
   },
   data() {
     return {
-      selectedProduct: 0,
+      selectedProduct: null,
     };
   },
   created() {},
@@ -59,7 +62,34 @@ export default {
     // variable(new, old) {}
   },
   methods: {
-    // foo() {},
+    getSideDishDesc(productIndex) {
+      let desc = '';
+      this._.forEach(this.order[productIndex].sideDishlist, (dish) => {
+        if (dish.quantity === 0) {
+          return;
+        }
+
+        if (desc !== '') {
+          desc += '、';
+        }
+
+        desc += `${dish.productName} X ${dish.quantity}`;
+      });
+
+      return desc;
+    },
+    removeCurrentProduct() {
+      const currentSelected = this.selectedProduct;
+      this.selectedProduct = null;
+      this.$store.dispatch('ORDER_REMOVE_BY_INDEX', currentSelected);
+    },
+    openOrCloseOrderSetting(index) {
+      if (this.selectedProduct !== index) {
+        this.selectedProduct = index;
+      } else {
+        this.selectedProduct = null;
+      }
+    },
   },
 };
 </script>

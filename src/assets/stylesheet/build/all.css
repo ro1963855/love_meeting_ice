@@ -6309,6 +6309,9 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+.dragable:hover {
+  cursor: grab; }
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Roboto';
@@ -6566,8 +6569,6 @@ a.text-dark:hover, a.text-dark:focus {
     height: calc(100% - 70px);
     padding: 20px 0;
     overflow: hidden; }
-  .productMenu .dragable:hover {
-    cursor: grab; }
 
 .navbar_header {
   height: 60px; }
@@ -6588,7 +6589,8 @@ a.text-dark:hover, a.text-dark:focus {
 .orderList > .order, .orderList > .bill, .billList > .order, .billList > .bill {
   height: 100%;
   background-color: #fff7fd;
-  border-bottom: 2px solid #cebebe; }
+  border-bottom: 2px solid #cebebe;
+  overflow: hidden; }
 
 .orderList > footer, .billList > footer {
   height: 70px;
@@ -6614,20 +6616,24 @@ a.text-dark:hover, a.text-dark:focus {
     .orderList > footer li:last-child, .billList > footer li:last-child {
       border-right: 0; }
 
-.order_product {
+.order_product > a {
   height: 80px;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #cebebe; }
-  .order_product > .order_desc h3 {
+  border-bottom: 2px solid #cebebe;
+  color: #000;
+  text-decoration: none; }
+  .order_product > a > .order_desc h3 {
     font: normal 400 1.5rem "Noto Sans TC", sans-serif; }
-  .order_product > .order_number {
+  .order_product > a > .order_desc h4 {
+    font: normal 400 0.8rem "Noto Sans TC", sans-serif; }
+  .order_product > a > .order_number {
     display: flex;
     flex-direction: column;
     align-items: center; }
-    .order_product > .order_number h4 {
+    .order_product > a > .order_number h4 {
       font: normal 400 1.2rem "Noto Sans TC", sans-serif; }
 
 .orderSetting {
@@ -6645,8 +6651,46 @@ a.text-dark:hover, a.text-dark:focus {
   .orderSetting .header {
     font: normal 400 1.5rem "Noto Sans TC", sans-serif;
     text-align: center;
-    padding: 10px 10px 5px 10px;
+    padding: 8px 10px 8px 10px;
+    border-bottom: 2px solid #868488;
+    height: 50px; }
+  .orderSetting > .content {
+    padding: 5px 0;
+    height: calc(100% - 50px - 140px);
+    overflow: hidden;
     border-bottom: 2px solid #868488; }
+    .orderSetting > .content .sideDish {
+      padding: 5px 15px;
+      font: normal 400 1.2rem "Noto Sans TC", sans-serif; }
+  .orderSetting .quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .orderSetting .quantity > * {
+      margin-left: 15px; }
+    .orderSetting .quantity > a {
+      color: #000; }
+  .orderSetting > footer {
+    height: 140px; }
+    .orderSetting > footer > .action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      font: normal 400 1.5rem "Noto Sans TC", sans-serif; }
+      .orderSetting > footer > .action > a {
+        color: #000; }
+      .orderSetting > footer > .action > * {
+        margin-right: 10px; }
+  .orderSetting .total_quantity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    border-bottom: 2px solid #868488;
+    font: normal 400 1.5rem "Noto Sans TC", sans-serif; }
+    .orderSetting .total_quantity > a {
+      color: #000; }
 
 .login {
   margin: 48px 0; }
@@ -6687,3 +6731,6 @@ address, dl, ol, p, pre, ul {
 
 .w-full {
   width: 100%; }
+
+.dragable:hover {
+  cursor: grab; }
