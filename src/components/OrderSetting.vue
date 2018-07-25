@@ -4,6 +4,7 @@
     <div class="content" v-dragscroll.y="true">
       <ol v-if="sideDish">
         <li v-for="(dish, index) in product.sideDishlist" :key="index"
+            v-if="dish.state !== '下架'"
             class="sideDish d-flex justify-content-between">
           <p>{{ dish.productName }}</p>
           <div class="d-flex quantity">
@@ -30,11 +31,21 @@
       </div>
       <div class="action">
         <p>刪除</p>
-        <a href="javascript:" @click="$parent.removeCurrentProduct();">
+        <a href="javascript:" @click="$refs.assertDelete.show()">
           <font-awesome-icon :icon="['fas', 'trash-alt']"></font-awesome-icon>
         </a>
       </div>
     </footer>
+    <b-modal id="assertDelete"
+              ref="assertDelete"
+              size="sm"
+              ok-title="確定"
+              cancel-title="取消"
+              @ok="deleteProduct"
+              centered
+              hide-header>
+      <p class="my-4">確定要刪除嗎?</p>
+    </b-modal>
   </div>
 </template>
 
@@ -108,6 +119,9 @@ export default {
       if (result >= 0) {
         this.product.sideDishlist[index].quantity = result;
       }
+    },
+    deleteProduct() {
+      this.$parent.removeCurrentProduct();
     },
   },
 };

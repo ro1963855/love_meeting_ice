@@ -6552,8 +6552,6 @@ a.text-dark:hover, a.text-dark:focus {
     border-bottom: 2px solid #000;
     height: 70px;
     overflow: hidden; }
-    .productMenu > .product_category:hover {
-      cursor: grab; }
     .productMenu > .product_category ol {
       display: flex; }
     .productMenu > .product_category li {
@@ -6586,26 +6584,28 @@ a.text-dark:hover, a.text-dark:focus {
       .navbar_header .menu_item a.active {
         color: #fff; }
 
-.orderList > .order, .orderList > .bill, .billList > .order, .billList > .bill {
+.orderList > .order {
   height: 100%;
   background-color: #fff7fd;
   border-bottom: 2px solid #cebebe;
   overflow: hidden; }
+  .orderList > .order li.active, .orderList > .order li:hover {
+    background-color: #fee6e6; }
 
-.orderList > footer, .billList > footer {
+.orderList > footer {
   height: 70px;
   width: 100%;
   background-color: #fff7fd; }
-  .orderList > footer ol, .billList > footer ol {
+  .orderList > footer ol {
     height: 100%;
     display: flex;
     padding: 5px;
     list-style-type: decimal; }
-  .orderList > footer a, .billList > footer a {
+  .orderList > footer a {
     text-decoration: none;
     font: normal 300 1.5rem "Noto Sans TC", sans-serif;
     color: #d5624b; }
-  .orderList > footer li, .billList > footer li {
+  .orderList > footer li {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6613,7 +6613,7 @@ a.text-dark:hover, a.text-dark:focus {
     height: 100%;
     border-right: 2px solid #cebebe;
     list-style-type: decimal; }
-    .orderList > footer li:last-child, .billList > footer li:last-child {
+    .orderList > footer li:last-child {
       border-right: 0; }
 
 .order_product > a {
@@ -6640,8 +6640,7 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   top: 0;
   left: 315px;
-  z-index: 10;
-  opacity: 0.9; }
+  z-index: 10; }
 
 .orderSetting {
   width: 300px;
@@ -6731,6 +6730,9 @@ address, dl, ol, p, pre, ul {
 
 .w-full {
   width: 100%; }
+
+.modal-backdrop {
+  opacity: 1; }
 
 .dragable:hover {
   cursor: grab; }

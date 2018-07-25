@@ -1,9 +1,14 @@
-.orderList, .billList {
-  > .order, >.bill {
+.orderList {
+  > .order {
     height: 100%;
     background-color: $color-casher-bg;
     border-bottom: 2px solid $color-casher-border;
     overflow: hidden;
+    li {
+      &.active, &:hover {
+        background-color: $color-casher-active;
+      }
+    }
   }
 
   > footer {
@@ -28,7 +33,7 @@
       cursor: pointer;
       height: 100%;
       border-right: 2px solid $color-casher-border;
-      list-style-type: decimal;
+      list-style-type: decimal;      
       &:last-child {
         border-right: 0;
       }
@@ -72,5 +77,4 @@
   top: 0;
   left: $sidebar-width + 15px;
   z-index: 10;
-  opacity: 0.9;
 }

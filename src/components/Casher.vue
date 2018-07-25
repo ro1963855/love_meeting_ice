@@ -32,7 +32,7 @@ export default {
       selectedTab: 0,
       tabs: [
         {
-          name: '點單',
+          name: '點單(New)',
         },
         {
           name: '未結帳',

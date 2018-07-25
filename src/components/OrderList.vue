@@ -4,6 +4,7 @@
       <ol>
         <li v-for="(product, index) in order" :key="index"
             class="order_product"
+            :class="{active: selectedProduct === index}"
             @click="openOrCloseOrderSetting(index)">
           <a href="javascrip:" class="w-100 h-100">
             <span class="order_desc">

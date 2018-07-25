@@ -7,10 +7,6 @@
     border-bottom: 2px solid $black;
     height: $body-header;
     overflow: hidden;
-    &:hover {
-      cursor: grab;
-    }
-
     ol {
       display: flex;
     }
