@@ -49,5 +49,7 @@ module.exports = {
     'linebreak-style': 0,
     'no-alert': 0,
     'no-else-return': 0,
+    'no-useless-return': 0,
+    'no-param-reassign': 0,
   }
 }

@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) =>
   sequelize.define(
-    'states',
+    'bill_states',
     {
       id: {
         type: Sequelize.INTEGER,
@@ -27,4 +27,3 @@ module.exports = (sequelize, Sequelize) =>
       charset: 'utf8mb4',
     },
   );
-

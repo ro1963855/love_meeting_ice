@@ -6,11 +6,9 @@ export default {
   mutations: {
     addOrder(state, product) {
       const item = {
-        sideDishlist: [],
-        mainDish: {
-          product,
-          number: 1,
-        },
+        ingredients: [],
+        ...product,
+        quantity: 1,
         totalCost: product.price,
       };
 
@@ -30,7 +28,7 @@ export default {
     ORDER_CLEAN: (context) => {
       context.commit('cleanOrder');
     },
-    ORDER_REMOVE_BY_INDEX: (context, index) => {
+    ORDER_REMOVE_BY_Index: (context, index) => {
       context.commit('removeOrderByIndex', index);
     },
   },

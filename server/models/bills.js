@@ -1,14 +1,22 @@
 module.exports = (sequelize, Sequelize) =>
   sequelize.define(
-    'states',
+    'bills',
     {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      stateName: {
-        type: Sequelize.STRING,
+      userId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      billStateId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      totalPrice: {
+        type: Sequelize.SMALLINT,
         allowNull: false,
       },
       createdAt: {

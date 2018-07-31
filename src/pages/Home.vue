@@ -20,6 +20,7 @@ export default {
   },
   created() {
     this.$store.dispatch('Menu_READ');
+    this.$store.dispatch('BILL_READ');
   },
   mounted() {},
   computed: {

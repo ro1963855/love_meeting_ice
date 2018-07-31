@@ -1,18 +1,18 @@
 <template>
-  <div class="orderSetting" v-if="product">
-    <div class="header">{{ product.mainDish.product.productName }}</div>
+  <div class="orderSetting" v-if="product && completeIngredients">
+    <div class="header">{{ product.productName }}</div>
     <div class="content" v-dragscroll.y="true">
-      <ol v-if="sideDish">
-        <li v-for="(dish, index) in product.sideDishlist" :key="index"
-            v-if="dish.state !== '下架'"
+      <ol>
+        <li v-for="ingredient in completeIngredients" :key="ingredient.id"
+            v-if="ingredient.state.stateName !== '下架'"
             class="sideDish d-flex justify-content-between">
-          <p>{{ dish.productName }}</p>
+          <p>{{ ingredient.productName }}</p>
           <div class="d-flex quantity">
-            <a href="javascript:" @click="countSideDish(index, dish, -1)">
+            <a href="javascript:" @click="countIngredientQuantity(ingredient, -1)">
               <font-awesome-icon :icon="['fas', 'minus']"></font-awesome-icon>
             </a>
-            <p>{{ dish.quantity }}</p>
-            <a href="javascript:" @click="countSideDish(index, dish, 1)">
+            <p>{{ getIngredientQuantity(ingredient.id) }}</p>
+            <a href="javascript:" @click="countIngredientQuantity(ingredient, 1)">
               <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
             </a>
           </div>
@@ -24,7 +24,7 @@
         <a href="javascript:" @click="countTotalQuantity(-1)">
           <font-awesome-icon :icon="['fas', 'minus']"></font-awesome-icon>
         </a>
-        <p>{{ product.mainDish.number }}</p>
+        <p>{{ product.quantity }}</p>
         <a href="javascript:" @click="countTotalQuantity(1)">
           <font-awesome-icon :icon="['fas', 'plus']"></font-awesome-icon>
         </a>
@@ -41,7 +41,7 @@
               size="sm"
               ok-title="確定"
               cancel-title="取消"
-              @ok="deleteProduct"
+              @ok="$emit('delete')"
               centered
               hide-header>
       <p class="my-4">確定要刪除嗎?</p>
@@ -60,8 +60,8 @@ export default {
   created() {},
   mounted() {},
   computed: {
-    sideDish() {
-      return this.$store.state.menu.sideDish;
+    completeIngredients() {
+      return this.$store.state.menu.ingredients[0].products;
     },
   },
   watch: {
@@ -71,57 +71,55 @@ export default {
           return;
         }
 
-        if (this.product.sideDishlist.length === 0) {
-          this.initProduct();
-        } else {
-          this.countProductCost();
-        }
+        this.countProductCost();
       },
       deep: true,
     },
   },
   methods: {
-    initProduct() {
-      if (this._.isEmpty(this.product) || this.product.sideDishlist.length !== 0) {
+    countProductCost() {
+      let cost = this.product.price;
+      this._.forEach(this.product.ingredients, (ingredient) => {
+        cost += ingredient.price * ingredient.quantity;
+      });
+
+      this.product.totalCost = cost * this.product.quantity;
+    },
+    getIngredientQuantity(ingredientId) {
+      const ingredient = this._.find(this.product.ingredients, { id: ingredientId });
+      if (ingredient) {
+        return ingredient.quantity;
+      }
+      return 0;
+    },
+    countTotalQuantity(add) {
+      const result = this.product.quantity + add;
+      if (result > 0) {
+        this.product.quantity = result;
+      }
+    },
+    countIngredientQuantity(ingredient, add) {
+      const ingredientIndex = this._.findIndex(this.product.ingredients, { id: ingredient.id });
+      // not exist
+      if (ingredientIndex === -1) {
+        if (add === 1) {
+          this.product.ingredients.push({
+            id: ingredient.id,
+            price: ingredient.price,
+            productName: ingredient.productName,
+            quantity: 1,
+          });
+        }
         return;
       }
 
-      this._.forEach(this.sideDish, (dish, index) => {
-        this.$set(this.product.sideDishlist, index, {
-          ...dish,
-          quantity: 0,
-        });
-      });
-    },
-    countProductCost() {
-      let cost = this.product.mainDish.product.price;
-      this._.forEach(this.product.sideDishlist, (dish) => {
-        cost += dish.price * dish.quantity;
-      });
-
-      this.product.totalCost = cost * this.product.mainDish.number;
-    },
-    getSidedishQuantity(sideDish) {
-      if (this._.isEmpty(sideDish)) {
-        return 0;
-      } else {
-        return sideDish.quantity;
-      }
-    },
-    countTotalQuantity(add) {
-      const result = this.product.mainDish.number + add;
+      // exist
+      const result = this.product.ingredients[ingredientIndex].quantity + add;
       if (result > 0) {
-        this.product.mainDish.number = result;
+        this.product.ingredients[ingredientIndex].quantity = result;
+      } else {
+        this.product.ingredients.splice(ingredientIndex, 1);
       }
-    },
-    countSideDish(index, sideDish, add) {
-      const result = this.product.sideDishlist[index].quantity + add;
-      if (result >= 0) {
-        this.product.sideDishlist[index].quantity = result;
-      }
-    },
-    deleteProduct() {
-      this.$parent.removeCurrentProduct();
     },
   },
 };

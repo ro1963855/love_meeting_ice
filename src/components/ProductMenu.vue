@@ -1,20 +1,21 @@
 <template>
   <div class="productMenu container-fluid">
     <div class="product_category row" v-dragscroll.x="true">
-      <ol v-if="mainDish">
-        <li v-for="(category, categoryId) in mainDish"
-            v-bind:key="categoryId">
+      <ol v-if="meals">
+        <li v-for="(category) in meals"
+            v-bind:key="category.id">
           <a href="javascript:;"
-              :class="{active: active == categoryId}"
-              @click="active = categoryId">{{ category.categoryName }}</a>
+              :class="{active: selected == category.id}"
+              @click="selected = category.id">{{ category.categoryName }}</a>
         </li>
       </ol>
     </div>
-    <div class="product_list" v-if="mainDish" v-dragscroll.y="true">
+    <div class="product_list" v-if="selectedCategory" v-dragscroll.y="true">
       <div class="row">
         <div class="col-md-6 col-lg-4 col-xl-3"
-              v-for="(product, productIndex) in mainDish[active].products"
-              v-bind:key="productIndex">
+              v-for="product in selectedCategory.products"
+              v-bind:key="product.id"
+              v-if="product.state.stateName !== '下架'">
         <product v-bind:product="product"></product>
         </div>
       </div>
@@ -32,18 +33,26 @@ export default {
   },
   data() {
     return {
-      active: 1,
+      selected: null,
     };
   },
   created() {},
   mounted() {},
   computed: {
-    mainDish() {
-      return this.$store.state.menu.mainDish;
+    meals() {
+      return this.$store.state.menu.meals;
+    },
+    selectedCategory() {
+      if (this.meals) {
+        return this._.find(this.meals, { id: this.selected });
+      }
+      return null;
     },
   },
   watch: {
-    // variable(new, old) {}
+    meals() {
+      this.selected = this._.head(this.meals).id;
+    },
   },
   methods: {},
 };

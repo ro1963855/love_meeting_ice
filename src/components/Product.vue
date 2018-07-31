@@ -31,7 +31,6 @@ export default {
     // variable(new, old) {}
   },
   methods: {
-    // foo() {},
     addProduct(product) {
       this.$store.dispatch('ORDER_ADD', product);
     },

@@ -4,38 +4,15 @@ import _ from 'lodash';
 export default {
   strict: true,
   state: {
-    mainDish: null,
-    sideDish: null,
+    meals: null,
+    ingredients: null,
   },
   mutations: {
     setMenu(state, menu) {
-      const mainDish = {};
-      const sideDish = [];
-      _.forEach(menu, (product) => {
-        const dish = {
-          id: product.id,
-          productName: product.productsName,
-          price: product.price,
-          state: product.state.stateName,
-        };
-
-        if (product.category.categoryName === '配料') {
-          sideDish.push(dish);
-        } else {
-          if (!mainDish[product.categoryId]) {
-            mainDish[product.categoryId] = [];
-            mainDish[product.categoryId] = {
-              categoryName: product.category.categoryName,
-              products: [],
-            };
-          }
-
-          mainDish[product.categoryId].products.push(dish);
-        }
-      });
-
-      state.mainDish = mainDish;
-      state.sideDish = sideDish;
+      const meals = menu;
+      const ingredients = _.remove(meals, category => category.categoryName === '配料');
+      state.meals = meals;
+      state.ingredients = ingredients;
     },
   },
   actions: {
@@ -44,7 +21,11 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             context.commit('setMenu', response.data);
+          } else {
+            alert('菜單讀取失敗!!!!(嚴重)');
           }
+        }).catch(() => {
+          alert('菜單讀取失敗!!!!(嚴重)');
         });
     },
   },

@@ -1,5 +1,6 @@
 <template>
   <div class="billList h-100">
+    <p v-for="(bill, index) in bills" :key='index'>{{ `單號: ${bill.id}` }}</p>
     <!-- <div class="bill">
       <ol>
         <li v-for="(product, index) in bill" :key="index">{{ product.productName }}</li>
@@ -28,7 +29,9 @@ export default {
   created() {},
   mounted() {},
   computed: {
-    // variable() {},
+    bills() {
+      return this.$store.state.bill.data;
+    },
   },
   watch: {
     // variable(new, old) {}

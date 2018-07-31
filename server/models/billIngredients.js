@@ -1,14 +1,30 @@
 module.exports = (sequelize, Sequelize) =>
   sequelize.define(
-    'states',
+    'bill_ingredients',
     {
-      id: {
-        type: Sequelize.INTEGER,
+      code: {
+        type: Sequelize.STRING(191),
         primaryKey: true,
-        autoIncrement: true,
+        allowNull: false,
       },
-      stateName: {
+      billMealCode: {
+        type: Sequelize.STRING(191),
+        allowNull: false,
+      },
+      productId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      productName: {
         type: Sequelize.STRING,
+        allowNull: false,
+      },
+      productPrice: {
+        type: Sequelize.MEDIUMINT,
+        allowNull: false,
+      },
+      quantity: {
+        type: Sequelize.SMALLINT,
         allowNull: false,
       },
       createdAt: {
@@ -27,4 +43,3 @@ module.exports = (sequelize, Sequelize) =>
       charset: 'utf8mb4',
     },
   );
-

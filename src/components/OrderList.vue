@@ -2,17 +2,17 @@
   <div class="orderList h-100 position-relative">
     <div class="order" v-dragscroll.y="true">
       <ol>
-        <li v-for="(product, index) in order" :key="index"
+        <li v-for="(product, productIndex) in order" :key="productIndex"
             class="order_product"
-            :class="{active: selectedProduct === index}"
-            @click="openOrCloseOrderSetting(index)">
+            :class="{active: selectedIndex === productIndex}"
+            @click="openOrCloseOrderSetting(productIndex)">
           <a href="javascrip:" class="w-100 h-100">
             <span class="order_desc">
-              <h3>{{ product.mainDish.product.productName }}</h3>
-              <h4>{{ getSideDishDesc(index) }}</h4>
+              <h3>{{ product.productName }}</h3>
+              <h4>{{ getIngredientsDesc(product.ingredients) }}</h4>
             </span>
             <span class="order_number">
-              <h3>{{ product.mainDish.number }}</h3>
+              <h3>{{ product.quantity }}</h3>
               <h4>${{ product.totalCost }}</h4>
             </span>
           </a>
@@ -28,14 +28,15 @@
           </a>
         </li>
         <li class="w-half">
-          <a href="javascript:">
+          <a href="javascript:" @click="sendOrderToBill()">
             <font-awesome-icon :icon="['far', 'list-alt']"></font-awesome-icon>
             <span>送出</span>
           </a>
         </li>
       </ol>
     </footer>
-    <order-setting :product.sync="order[selectedProduct]"></order-setting>
+    <order-setting :product.sync="order[selectedIndex]"
+                    @delete="removeCurrentProduct()"></order-setting>
   </div>
 </template>
 
@@ -49,7 +50,7 @@ export default {
   },
   data() {
     return {
-      selectedProduct: null,
+      selectedIndex: null,
     };
   },
   created() {},
@@ -63,33 +64,31 @@ export default {
     // variable(new, old) {}
   },
   methods: {
-    getSideDishDesc(productIndex) {
+    getIngredientsDesc(ingredients) {
+      const vm = this;
       let desc = '';
-      this._.forEach(this.order[productIndex].sideDishlist, (dish) => {
-        if (dish.quantity === 0) {
-          return;
-        }
-
-        if (desc !== '') {
+      vm._.forEach(ingredients, (ingredient) => {
+        if (!vm._.isEmpty(desc)) {
           desc += '、';
         }
-
-        desc += `${dish.productName} X ${dish.quantity}`;
+        desc += `${ingredient.productName} X ${ingredient.quantity}`;
       });
-
       return desc;
     },
     removeCurrentProduct() {
-      const currentSelected = this.selectedProduct;
-      this.selectedProduct = null;
-      this.$store.dispatch('ORDER_REMOVE_BY_INDEX', currentSelected);
+      const currentSelected = this.selectedIndex;
+      this.selectedIndex = null;
+      this.$store.dispatch('ORDER_REMOVE_BY_Index', currentSelected);
     },
     openOrCloseOrderSetting(index) {
-      if (this.selectedProduct !== index) {
-        this.selectedProduct = index;
+      if (this.selectedIndex !== index) {
+        this.selectedIndex = index;
       } else {
-        this.selectedProduct = null;
+        this.selectedIndex = null;
       }
+    },
+    sendOrderToBill() {
+      this.$store.dispatch('BILL_ADD', { order: this.order, userId: 1 });
     },
   },
 };
