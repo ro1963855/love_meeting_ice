@@ -1,7 +1,6 @@
 .productMenu {
-  width: calc(100% - #{$sidebar-width});
-  background: $color-product-bg;
-  border-left: 2px solid $black;
+  width: 100%;
+  height: 100%;
   > .product_category {
     padding: 15px;
     border-bottom: 2px solid $black;

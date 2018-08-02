@@ -11,7 +11,7 @@
       </ol>
     </div>
     <div class="product_list" v-if="selectedCategory" v-dragscroll.y="true">
-      <div class="row">
+      <div class="row" v-dragscroll.y="true">
         <div class="col-md-6 col-lg-4 col-xl-3"
               v-for="product in selectedCategory.products"
               v-bind:key="product.id"
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Product from '@/components/Product';
+import Product from '@/components/Product/Product';
 
 export default {
   name: 'productMenu',
@@ -36,7 +36,11 @@ export default {
       selected: null,
     };
   },
-  created() {},
+  created() {
+    if (this.meals) {
+      this.selected = this._.head(this.meals).id;
+    }
+  },
   mounted() {},
   computed: {
     meals() {

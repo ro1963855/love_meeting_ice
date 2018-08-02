@@ -1,0 +1,28 @@
+.casherHeader {
+  height: $casher-header;
+  width: 100%;
+  background: $color-casher-primary;
+  ol {
+    height: 100%;
+    display: flex;
+    padding: 5px;
+  }
+
+  a {
+    @include flex_center_center();
+    @include a_unstyle();
+    cursor: pointer;
+    border-right: 2px solid $color-casher-placholder;
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  li {
+    font: $font-subtitle;
+    color: $color-casher-placholder;
+    &.active {
+      color: $white;
+    }
+  }
+}

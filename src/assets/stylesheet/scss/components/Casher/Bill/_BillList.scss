@@ -1,0 +1,17 @@
+.bill_list_item > a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .bill_id {
+    h3 {
+      font: $font-form;
+    }
+  }
+
+  .bill_totalPrice {
+    h3 {
+      font: $font-product-title;
+    }
+  }
+
+}

@@ -1,51 +1,47 @@
 <template>
-  <div class="orderList h-100 position-relative">
-    <div class="order" v-dragscroll.y="true">
+  <div class="casher_list has_footer orderList position-relative">
+    <div class="casher_list_body" v-dragscroll.y="true">
       <ol>
         <li v-for="(product, productIndex) in order" :key="productIndex"
-            class="order_product"
+            class="casher_list_item order_product"
             :class="{active: selectedIndex === productIndex}"
             @click="openOrCloseOrderSetting(productIndex)">
-          <a href="javascrip:" class="w-100 h-100">
+          <a href="javascrip:">
             <span class="order_desc">
               <h3>{{ product.productName }}</h3>
               <h4>{{ getIngredientsDesc(product.ingredients) }}</h4>
             </span>
             <span class="order_number">
               <h3>{{ product.quantity }}</h3>
-              <h4>${{ product.totalCost }}</h4>
+              <h4>{{ `$${product.totalCost}` }}</h4>
             </span>
           </a>
         </li>
       </ol>
     </div>
-    <footer>
+    <div class="casher_list_footer">
       <ol>
-        <li class="w-half">
-          <a href="javascript:" @click="$store.dispatch('ORDER_CLEAN');">
-            <font-awesome-icon :icon="['fas', 'broom']"></font-awesome-icon>
-            <span>清空</span>
-          </a>
+        <li class="w-50" @click="$store.dispatch('ORDER_CLEAN');">
+          <cahser-action :action="{icon: ['fas', 'broom'], name: '清空'}"></cahser-action>
         </li>
-        <li class="w-half">
-          <a href="javascript:" @click="sendOrderToBill()">
-            <font-awesome-icon :icon="['far', 'list-alt']"></font-awesome-icon>
-            <span>送出</span>
-          </a>
+        <li class="w-50" @click="sendOrderToBill()">
+          <cahser-action :action="{icon: ['far', 'list-alt'], name: '送出'}"></cahser-action>
         </li>
       </ol>
-    </footer>
+    </div>
     <order-setting :product.sync="order[selectedIndex]"
                     @delete="removeCurrentProduct()"></order-setting>
   </div>
 </template>
 
 <script>
-import OrderSetting from '@/components/OrderSetting';
+import CahserAction from '@/components/Casher/CahserAction';
+import OrderSetting from '@/components/Casher/Order/OrderSetting';
 
 export default {
   name: 'orderList',
   components: {
+    CahserAction,
     OrderSetting,
   },
   data() {

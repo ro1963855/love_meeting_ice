@@ -1,0 +1,71 @@
+.casher {
+  height: calc(100% - #{$navbar-height});
+  width: 100%;
+  .casher_sideList {
+    width: $sidebar-width;
+    height: 100%;
+    background-color: $color-casher-bg;
+  }
+
+  .casher_body {
+    height: 100%;
+    background: $color-casher-body-bg;
+    border-left: 2px solid $black;
+    width: calc(100% - #{$sidebar-width});
+    overflow: hidden;
+  }
+  
+  .casher_list {
+    height: calc(100% - #{$casher-header});
+    &.has_footer {
+      height: calc(100% - #{$casher-header} - #{$casher-footer});
+    }
+  }
+
+  .casher_list_body {
+    height: 100%;
+    border-bottom: 2px solid $color-casher-border;
+    overflow: hidden;
+  }
+
+  .casher_list_item {
+    &.active, 
+    &:hover {
+      background-color: $color-casher-active;
+    }
+
+    > a {
+      height: 80px;
+      padding: 15px;
+      border-bottom: 2px solid $color-casher-border;
+      color: $black;
+      @include a_unstyle();
+    }
+  }
+
+  .casher_list_footer {
+    height:$casher-footer;
+    width: 100%;
+    ol {
+      height: 100%;
+      display: flex;
+      padding: 5px;
+    }
+
+    li {
+      @include flex_center_center();
+      cursor: pointer;
+      height: 100%;
+      border-right: 2px solid $color-casher-border;
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    .cahserAction {
+      @include a_unstyle();
+      font: $font-subtitle;
+      color: $color-casher-placholder;
+    }
+  }
+}

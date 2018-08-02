@@ -6,6 +6,7 @@ export default {
   state: {
     meals: null,
     ingredients: null,
+    alreadyRead: false,
   },
   mutations: {
     setMenu(state, menu) {
@@ -13,10 +14,14 @@ export default {
       const ingredients = _.remove(meals, category => category.categoryName === '配料');
       state.meals = meals;
       state.ingredients = ingredients;
+      state.alreadyRead = true;
     },
   },
   actions: {
     Menu_READ: (context) => {
+      if (context.state.alreadyRead) {
+        return;
+      }
       axios.get('/api/menu')
         .then((response) => {
           if (response.status === 200) {

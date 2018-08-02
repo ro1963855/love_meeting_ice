@@ -6,14 +6,15 @@
 @import 'fonts';
 @import 'love_meeting_ice';
 @import 'components/Form';
-@import 'components/Casher';
-@import 'components/Product';
-@import 'components/ProductMenu';
+@import 'components/Casher/Casher';
+@import 'components/Casher/CasherHeader';
+@import 'components/Casher/Bill/BillList';
+@import 'components/Casher/Order/OrderList';
+@import 'components/Casher/Order/OrderSetting';
+@import 'components/Product/Product';
+@import 'components/Product/ProductMenu';
 @import 'components/NavbarHeader';
-@import 'components/CasherList';
-@import 'components/OrderSetting';
 @import 'pages/Login';
-@import 'pages/Home';
 
 body {
   min-width: 736px;
@@ -33,14 +34,6 @@ address, dl, ol, p, pre, ul {
 
 .totoal_layout {
   height: 100vh;
-}
-
-.w-half {
-  width: 50%;
-}
-
-.w-full {
-  width: 100%;
 }
 
 .modal-backdrop {

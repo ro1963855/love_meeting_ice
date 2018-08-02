@@ -60,7 +60,7 @@ export default {
           if (response.status === 200) {
             this.$session.start();
             this.$session.set(this.sessionKey.token, response.data.token);
-            this.$router.push({ name: 'Home' });
+            this.$router.push({ name: 'Order' });
           } else {
             alert('Login failed');
           }

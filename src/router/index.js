@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Login from '@/pages/Login';
-import Home from '@/pages/Home';
+import Order from '@/pages/Order';
+import Bill from '@/pages/Bill';
 
 Vue.use(Router);
 
@@ -14,9 +15,14 @@ export default new Router({
       component: Login,
     },
     {
-      path: '/home',
-      name: 'Home',
-      component: Home,
+      path: '/order',
+      name: 'Order',
+      component: Order,
+    },
+    {
+      path: '/bill',
+      name: 'Bill',
+      component: Bill,
     },
     {
       path: '*',
