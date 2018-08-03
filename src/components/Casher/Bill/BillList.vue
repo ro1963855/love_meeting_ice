@@ -3,13 +3,16 @@
     <div class="casher_list_body" v-dragscroll.y="true">
       <ol>
         <li v-for="(bill, index) in bills" :key="index"
-            class="casher_list_item bill_list_item">
+            class="casher_list_item bill_list_item"
+            :class="{active: selectedBillId === bill.id}"
+            @click="$emit('update:selectedBillId', bill.id)">
           <a href="javascrip:">
             <span class="bill_id">
               <h3>{{ `單號: ${bill.id}` }}</h3>
             </span>
             <span class="bill_totalPrice">
               <h3>{{ `$${bill.totalPrice}` }}</h3>
+              <h4>{{ $moment(bill.orderTime).startOf('second').fromNow() }}</h4>
             </span>
           </a>
         </li>
@@ -22,6 +25,7 @@
 export default {
   name: 'billList',
   components: {},
+  props: ['selectedBillId'],
   data() {
     return {};
   },

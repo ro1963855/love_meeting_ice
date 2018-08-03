@@ -1,5 +1,6 @@
-import axios from 'axios';
 import _ from 'lodash';
+import axios from 'axios';
+import moment from 'moment';
 import store from '@/store';
 
 export default {
@@ -58,6 +59,7 @@ export default {
         billStatesId: 1,
         totalPrice,
         order: orderSimple,
+        orderTime: moment().format('YYYY-MM-DD HH:mm:ss'),
       };
 
       axios.post('/api/bill', bill)

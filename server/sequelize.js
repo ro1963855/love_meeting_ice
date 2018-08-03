@@ -18,6 +18,7 @@ const sequelize = new Sequelize(config.mysql.database, config.mysql.user, config
     acquire: 30000,
     idle: 10000,
   },
+  timezone: 'Asia/Taipei',
 });
 
 const Users = UsersModel(sequelize, Sequelize);

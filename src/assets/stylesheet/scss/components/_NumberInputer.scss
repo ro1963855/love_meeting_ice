@@ -1,0 +1,48 @@
+.numberInputer {
+  background-color: rgba(65, 58, 58, .8);
+  height: 100vh;
+  width: 100vw;
+  @include absolute_center_center();
+  z-index: 99997;
+  > .wrapper {
+    max-height: 480px;
+    height: 90%;
+    max-width: 320px;
+    margin: auto;
+    @include absolute_center_center();
+    z-index: 99998;
+  }
+
+  ol {
+    height: 100%;
+  }
+
+  li {
+    height: 20%;
+    border: #343436 1px solid;
+    color: $black;
+    font: $font-logo;
+    @include flex_center_center();
+  }
+
+  .show_panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #f3f2f2;
+    overflow: hidden;
+  }
+
+  .number {
+    background-color: #d7d4f0;
+  }
+
+  .action {
+    background-color: #d0782a;
+  }
+
+  .number, .action {
+    cursor: pointer;
+  }
+
+}

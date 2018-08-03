@@ -7,6 +7,7 @@
 export default {
   name: '{{ camelCase name }}',
   components: {},
+  props: [],
   data() {
     return {};
   },

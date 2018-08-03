@@ -9,15 +9,17 @@
 @import 'components/Casher/Casher';
 @import 'components/Casher/CasherHeader';
 @import 'components/Casher/Bill/BillList';
+@import 'components/Casher/Bill/BillDetail';
 @import 'components/Casher/Order/OrderList';
 @import 'components/Casher/Order/OrderSetting';
 @import 'components/Product/Product';
 @import 'components/Product/ProductMenu';
 @import 'components/NavbarHeader';
+@import 'components/NumberInputer';
 @import 'pages/Login';
 
 body {
-  min-width: 736px;
+  min-width: 960px;
 }
 
 h1, h2, h3, h4, * {

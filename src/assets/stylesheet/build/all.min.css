@@ -832,6 +832,7 @@ a.btn.disabled,fieldset:disabled a.btn{pointer-events:none}
 .page-item:last-child .page-link{border-top-right-radius:.25rem;border-bottom-right-radius:.25rem}
 .page-item.active .page-link{z-index:1;color:#fff;background-color:#5ab9e5;border-color:#5ab9e5}
 .page-item.disabled .page-link{color:#6c757d;pointer-events:none;cursor:auto;background-color:#fff;border-color:#dee2e6}
+.billDetail .detail_list>li .mutiple_option>h2:hover,.carousel-indicators li,.casherHeader a,.close:not(:disabled):not(.disabled),.numberInputer .action,.numberInputer .number,.product{cursor:pointer}
 .pagination-lg .page-link{padding:.75rem 1.5rem;font-size:1.25rem;line-height:1.5}
 .pagination-lg .page-item:first-child .page-link{border-top-left-radius:.3rem;border-bottom-left-radius:.3rem}
 .pagination-lg .page-item:last-child .page-link{border-top-right-radius:.3rem;border-bottom-right-radius:.3rem}
@@ -944,7 +945,6 @@ to{background-position:0 0}
 .popover,.tooltip{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-style:normal;font-weight:400;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;white-space:normal;line-break:auto;font-size:.875rem;word-wrap:break-word;text-decoration:none}
 .modal-title,.popover,.tooltip{line-height:1.5}
 .popover,.text-hide,.tooltip{text-shadow:none}
-.close:not(:disabled):not(.disabled){cursor:pointer}
 .close:not(:disabled):not(.disabled):focus,.close:not(:disabled):not(.disabled):hover{color:#000;text-decoration:none;opacity:.75}
 button.close{padding:0;background-color:transparent;border:0;-webkit-appearance:none}
 .modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;display:none;outline:0}
@@ -1048,7 +1048,7 @@ button.close{padding:0;background-color:transparent;border:0;-webkit-appearance:
 .carousel-control-prev-icon{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E")}
 .carousel-control-next-icon{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")}
 .carousel-indicators{position:absolute;right:0;bottom:10px;left:0;z-index:15;display:flex;justify-content:center;padding-left:0;margin-right:15%;margin-left:15%;list-style:none}
-.carousel-indicators li{position:relative;flex:0 1 auto;width:30px;height:3px;margin-right:3px;margin-left:3px;text-indent:-999px;cursor:pointer;background-color:rgba(255,255,255,.5)}
+.carousel-indicators li{position:relative;flex:0 1 auto;width:30px;height:3px;margin-right:3px;margin-left:3px;text-indent:-999px;background-color:rgba(255,255,255,.5)}
 .carousel-indicators li::after,.carousel-indicators li::before{left:0;display:inline-block;height:10px;position:absolute;content:"";width:100%}
 .carousel-indicators li::before{top:-10px}
 .carousel-indicators li::after{bottom:-10px}
@@ -1824,16 +1824,35 @@ h2,h3{page-break-after:avoid}
 .casher .casher_list_footer .cahserAction{text-decoration:none}
 .casherHeader{height:70px;width:100%;background:#fd6d52}
 .casherHeader ol{height:100%;display:flex;padding:5px}
-.casherHeader a{display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;border-right:2px solid #d5624b}
+.casherHeader a{display:flex;align-items:center;justify-content:center;text-decoration:none;border-right:2px solid #d5624b}
 .casherHeader a:last-child{border-right:0}
+.bill_list_item>a .bill_id h3,.bill_list_item>a .bill_totalPrice h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
 .casherHeader li.active{color:#fff}
-.orderSetting .quantity>a,.orderSetting .total_quantity>a,.orderSetting>footer>.action>a{color:#000}
 .bill_list_item>a{display:flex;justify-content:space-between;align-items:center}
-.bill_list_item>a .bill_id h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
-.bill_list_item>a .bill_totalPrice h3{font:normal 400 1.2rem "Noto Sans TC",sans-serif}
+.bill_list_item>a .bill_totalPrice{display:flex;flex-direction:column;align-items:center}
+.bill_list_item>a .bill_totalPrice h4{font:italic 400 .8rem "Noto Sans TC",sans-serif}
+.billDetail{height:100%;overflow:hidden}
+.billDetail>.header{height:70px;border-bottom:2px solid #000;text-align:center}
+.billDetail>.header h1{font:normal 700 2rem Roboto,sans-serif;color:#fff;margin:auto}
+.billDetail .detail_list>li .detail_content h2,.billDetail .detail_list>li .detail_title h2{font:normal 700 1.7rem Roboto,sans-serif}
+.billDetail .detail_list>li{height:80px;border-bottom:2px solid #000;color:#fff;display:flex}
+.billDetail .detail_list>li .detail_title{display:flex;justify-content:flex-end;align-items:center;width:180px;padding:10px}
+.billDetail .detail_list>li .detail-title-icon{margin-right:10px}
+.billDetail .detail_list>li .detail_content{display:flex;justify-content:flex-start;align-items:center;padding:10px}
+.billDetail .detail_list>li .mutiple_option{color:#868488}
+.billDetail .detail_list>li .mutiple_option>h2{margin-right:30px}
+.billDetail .detail_list>li .mutiple_option>h2.choose{color:#fff}
+.orderSetting .quantity>a,.orderSetting .total_quantity>a,.orderSetting>footer>.action>a{color:#000}
+.billDetail .detail_menu_list{padding:10px;background-color:#272527;margin:0 10px 10px 180px}
+.billDetail .detail_menu_list li{display:flex;flex-direction:column}
+.billDetail .detail_menu_list li h3{font:normal 400 1.5rem Roboto,sans-serif}
+.billDetail .detail_menu_list li>div{display:flex}
+.billDetail .detail_menu_list li .detail_menu_title{width:150px}
+.billDetail .detail_menu_list li .detail_menu_cost{margin-left:auto}
+.billDetail .detail_menu_list li .detail_menu_ingredient>.detail_menu_title{padding-left:40px}
 .order_product>a{display:flex;justify-content:space-between;align-items:center}
 .order_product>a>.order_desc h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
-.order_product>a>.order_desc h4{font:normal 400 .8rem "Noto Sans TC",sans-serif}
+.order_product>a>.order_desc h4{font:italic 400 .8rem "Noto Sans TC",sans-serif}
 .order_product>a>.order_number{display:flex;flex-direction:column;align-items:center}
 .order_product>a>.order_number h4{font:normal 400 1.2rem "Noto Sans TC",sans-serif}
 .orderSetting{position:absolute;top:0;left:315px;z-index:10;width:300px;height:100%;background-color:#d6d6d6;border-radius:10px}
@@ -1847,8 +1866,8 @@ h2,h3{page-break-after:avoid}
 .orderSetting>footer>.action{align-items:center;justify-content:center}
 .orderSetting>footer>.action>*{margin-right:10px}
 .orderSetting .total_quantity{justify-content:space-around;align-items:center;border-bottom:2px solid #868488}
-.product{height:200px;position:relative;margin-bottom:20px;cursor:pointer}
-.product>.desc{padding:10px 10px 0;width:100%;background-color:#413a3a;position:absolute;bottom:0;font:normal 400 .8rem "Noto Sans TC",sans-serif;color:#fff;opacity:.9}
+.product{height:200px;position:relative;margin-bottom:20px}
+.product>.desc{padding:10px 10px 0;width:100%;background-color:#413a3a;position:absolute;bottom:0;color:#fff;opacity:.9}
 .product>.desc h2{margin-bottom:10px}
 .productMenu{width:100%;height:100%}
 .productMenu>.product_category{padding:15px;border-bottom:2px solid #000;height:70px;overflow:hidden}
@@ -1861,14 +1880,22 @@ h2,h3{page-break-after:avoid}
 .navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
 .navbar_header .menu_list{display:flex}
 .navbar_header .menu_item{margin:0 10px}
+.numberInputer,.numberInputer>.wrapper{position:absolute;margin:auto;top:0;bottom:0;left:0;right:0}
 .navbar_header .menu_item a{text-decoration:none;color:#00408B;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
 .navbar_header .menu_item a.active{color:#fff}
+.numberInputer{background-color:rgba(65,58,58,.8);height:100vh;width:100vw;z-index:99997}
+.numberInputer>.wrapper{max-height:480px;height:90%;max-width:320px;z-index:99998}
+.numberInputer ol{height:100%}
+.numberInputer li{height:20%;border:1px solid #343436;color:#000;font:normal 700 1.5rem "Noto Sans TC",sans-serif;display:flex;align-items:center;justify-content:center}
+.numberInputer .show_panel{display:flex;align-items:center;justify-content:flex-end;background-color:#f3f2f2;overflow:hidden}
+.numberInputer .number{background-color:#d7d4f0}
+.numberInputer .action{background-color:#d0782a}
 .login{margin:48px 0}
 .login .title{font:normal 300 3rem Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
-body{min-width:736px}
+body{min-width:960px}
 *,h1,h2,h3,h4{line-height:1;margin:0;padding:0;list-style:none}
 address,dl,ol,p,pre,ul{margin-bottom:0}
 .totoal_layout{height:100vh}

@@ -19,6 +19,11 @@ module.exports = (sequelize, Sequelize) =>
         type: Sequelize.SMALLINT,
         allowNull: false,
       },
+      orderTime: {
+        type: 'TIMESTAMP',
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+        allowNull: false,
+      },
       createdAt: {
         type: 'TIMESTAMP',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

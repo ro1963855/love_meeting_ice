@@ -90,7 +90,10 @@ router.route('/bill').get((req, res) => {
         attributes: [['productId', 'id'], 'productName', ['productPrice', 'price'], 'quantity'],
       }],
     }],
-    attributes: ['id', 'userId', 'billStateId', 'totalPrice'],
+    attributes: ['id', 'userId', 'billStateId', 'totalPrice', 'orderTime'],
+    order: [
+      ['orderTime', 'ASC'],
+    ],
   })
     .then(bills => res.status(200).json(bills))
     .catch((err) => {
@@ -106,6 +109,7 @@ router.route('/bill').post((req, res) =>
       userId: data.userId,
       billStateId: data.billStatesId,
       totalPrice: data.totalPrice,
+      orderTime: data.orderTime,
     }, { transaction: t })
       .then((bill) => {
         billId = bill.id;

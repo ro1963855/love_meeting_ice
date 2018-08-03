@@ -10,6 +10,7 @@ $color-casher-placholder: #d5624b;
 $color-casher-bg: #fff7fd;
 $color-casher-border: #cebebe;
 $color-casher-active: #fee6e6;
+$color-bill-order-list: #272527;
 
 // font
 $font-title: normal 300 3rem 'Roboto', sans-serif;
@@ -17,19 +18,16 @@ $font-logo: normal bold 1.5rem 'Noto Sans TC', sans-serif;
 $font-subtitle: normal 300 1.5rem 'Noto Sans TC', sans-serif;
 $font-form: normal 400 1.5rem 'Noto Sans TC', sans-serif;
 $font-product-title: normal 400 1.2rem 'Noto Sans TC', sans-serif;
-$font-lable: normal 400 0.8rem 'Noto Sans TC', sans-serif;
+$font-lable: italic 400 0.8rem 'Noto Sans TC', sans-serif;
+$font-bill-title: normal bold 2rem 'Roboto', sans-serif;
+$font-bill-subtitle: normal bold 1.7rem 'Roboto', sans-serif;
+$font-bill-menu: normal 400 1.5rem 'Roboto', sans-serif;
 
 // form
 $form_height: 52px;
 
 // nvabar 
 $navbar-height: 60px;
-
-// sidebar
-$sidebar-width: 300px;
-
-// body
-$body-header: 70px;
 
 // order-setting
 $orderSetting-header: 50px;
@@ -38,3 +36,11 @@ $orderSetting-footer: 70px;
 // casher
 $casher-header: 70px;
 $casher-footer: 70px;
+$cahser-list-item: 80px; 
+$sidebar-width: 300px;
+$body-header: 70px;
+
+// bill
+$bill-list-height: 70px;
+$bill-detail-title-width: 180px;
+$bill-column-margin: 10px;

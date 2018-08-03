@@ -13,6 +13,7 @@ import VueRouter from 'vue-router';
 import VueSession from 'vue-session';
 import VueDragscroll from 'vue-dragscroll';
 import VueLodash from 'vue-lodash';
+import * as moment from 'moment';
 import './assets/stylesheet/build/all.min.css';
 import App from './App';
 import router from './router';
@@ -30,6 +31,8 @@ Vue.use(VueDragscroll);
 Vue.use(VueLodash);
 Vue.config.productionTip = false;
 
+moment.locale('zh-tw');
+Vue.prototype.$moment = moment;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

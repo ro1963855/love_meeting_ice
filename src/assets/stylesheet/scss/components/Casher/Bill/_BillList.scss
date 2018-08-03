@@ -9,8 +9,15 @@
   }
 
   .bill_totalPrice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     h3 {
-      font: $font-product-title;
+      font: $font-form;
+    }
+
+    h4 {
+      font: $font-lable;
     }
   }
 

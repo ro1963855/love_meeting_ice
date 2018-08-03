@@ -1,0 +1,92 @@
+.billDetail {
+  height: 100%;
+  overflow: hidden;
+  > .header {
+    height: $body-header;
+    border-bottom: 2px solid $black;
+    text-align: center;
+    h1 {
+      font: $font-bill-title;
+      color: $white;
+      margin: auto;
+    }
+  }
+
+  .detail_list > li {
+    height: $cahser-list-item;
+    border-bottom: 2px solid $black;
+    color: $white;
+    display: flex;
+    .detail_title {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: $bill-detail-title-width;
+      padding: $bill-column-margin;
+      h2 {
+        font: $font-bill-subtitle;
+      }
+    }
+
+    .detail-title-icon {
+      margin-right: $bill-column-margin;
+    }
+
+    .detail_content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: $bill-column-margin;
+      h2 {
+        font: $font-bill-subtitle;
+      }
+    }
+
+    .mutiple_option {
+      color: $color-product-notActive;
+      > h2 {
+        margin-right: 30px;
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.choose {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .detail_menu_list {
+    padding: $bill-column-margin;
+    background-color: $color-bill-order-list;
+    margin: $bill-column-margin;
+    margin-top: 0;
+    margin-left: $bill-detail-title-width;
+    li {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font: $font-bill-menu;
+      }
+
+      > div {
+        display: flex;
+      }
+
+      .detail_menu_title {
+        width: 150px;
+      }
+
+      .detail_menu_cost {
+        margin-left: auto;
+      }
+
+      .detail_menu_ingredient {
+        > .detail_menu_title {
+          padding-left: 40px;
+        }
+      }
+    }
+  }
+}
