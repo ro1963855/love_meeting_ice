@@ -5,7 +5,9 @@
       <bill-list :selectedBillId.sync="selectedBillId"></bill-list>
     </div>
     <div class="casher_body">
-      <bill-detail :bill="selectedBill" v-if="selectedBill"></bill-detail>
+      <bill-detail  v-if="selectedBill"
+                    :selectedBillId.sync="selectedBillId"
+                    :bill="selectedBill"></bill-detail>
     </div>
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
   },
   data() {
     return {
-      selectedBillId: 1,
+      selectedBillId: null,
     };
   },
   created() {

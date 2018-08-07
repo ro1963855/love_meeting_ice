@@ -2,7 +2,9 @@
   <div class="casher_list billList">
     <div class="casher_list_body" v-dragscroll.y="true">
       <ol>
-        <li v-for="(bill, index) in bills" :key="index"
+        <li v-for="(bill, index) in bills"
+            :key="index"
+            v-if="isNotPay(bill.billStateId)"
             class="casher_list_item bill_list_item"
             :class="{active: selectedBillId === bill.id}"
             @click="$emit('update:selectedBillId', bill.id)">
@@ -41,6 +43,9 @@ export default {
   },
   methods: {
     // foo() {},
+    isNotPay(billStateId) {
+      return billStateId === 1 || billStateId === 2;
+    },
   },
 };
 </script>

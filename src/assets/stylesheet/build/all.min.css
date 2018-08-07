@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.1.2 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -52,8 +53,8 @@ button{border-radius:0}
 button:focus{outline:dotted 1px;outline:-webkit-focus-ring-color auto 5px}
 button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}
 button,select{text-transform:none}
-[type=submit],[type=reset],button,html [type=button]{-webkit-appearance:button}
-[type=submit]::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}
+[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}
+[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,[type=button]::-moz-focus-inner,button::-moz-focus-inner{padding:0;border-style:none}
 input[type=radio],input[type=checkbox]{box-sizing:border-box;padding:0}
 input[type=date],input[type=time],input[type=datetime-local],input[type=month]{-webkit-appearance:listbox}
 textarea{resize:vertical}
@@ -441,7 +442,7 @@ select.form-control:focus::-ms-value{color:#495057;background-color:#fff}
 .form-inline .custom-control{align-items:center;justify-content:center}
 .form-inline .custom-control-label{margin-bottom:0}
 }
-.btn-block,input[type=submit].btn-block,input[type=button].btn-block,input[type=reset].btn-block{width:100%}
+.btn-block,input[type=reset].btn-block,input[type=submit].btn-block,input[type=button].btn-block{width:100%}
 .btn{display:inline-block;text-align:center;vertical-align:middle;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}
 @media screen and (prefers-reduced-motion:reduce){.btn{transition:none}
 }
@@ -1831,25 +1832,33 @@ h2,h3{page-break-after:avoid}
 .bill_list_item>a{display:flex;justify-content:space-between;align-items:center}
 .bill_list_item>a .bill_totalPrice{display:flex;flex-direction:column;align-items:center}
 .bill_list_item>a .bill_totalPrice h4{font:italic 400 .8rem "Noto Sans TC",sans-serif}
-.billDetail{height:100%;overflow:hidden}
+.billDetail{height:100%}
+.billDetail .detailBody{height:calc(100% - 70px - 70px);overflow:hidden}
 .billDetail>.header{height:70px;border-bottom:2px solid #000;text-align:center}
 .billDetail>.header h1{font:normal 700 2rem Roboto,sans-serif;color:#fff;margin:auto}
 .billDetail .detail_list>li .detail_content h2,.billDetail .detail_list>li .detail_title h2{font:normal 700 1.7rem Roboto,sans-serif}
-.billDetail .detail_list>li{height:80px;border-bottom:2px solid #000;color:#fff;display:flex}
+.billDetail .detail_list>li{height:60px;border-bottom:2px solid #000;color:#fff;display:flex}
 .billDetail .detail_list>li .detail_title{display:flex;justify-content:flex-end;align-items:center;width:180px;padding:10px}
 .billDetail .detail_list>li .detail-title-icon{margin-right:10px}
 .billDetail .detail_list>li .detail_content{display:flex;justify-content:flex-start;align-items:center;padding:10px}
 .billDetail .detail_list>li .mutiple_option{color:#868488}
 .billDetail .detail_list>li .mutiple_option>h2{margin-right:30px}
 .billDetail .detail_list>li .mutiple_option>h2.choose{color:#fff}
-.orderSetting .quantity>a,.orderSetting .total_quantity>a,.orderSetting>footer>.action>a{color:#000}
-.billDetail .detail_menu_list{padding:10px;background-color:#272527;margin:0 10px 10px 180px}
-.billDetail .detail_menu_list li{display:flex;flex-direction:column}
+.billDetail .detail_menu_list{padding:10px;background-color:#272527;margin:0 10px 10px 180px;width:450px}
+.billDetail .detail_menu_list li{display:flex;flex-direction:column;margin-bottom:5px}
 .billDetail .detail_menu_list li h3{font:normal 400 1.5rem Roboto,sans-serif}
 .billDetail .detail_menu_list li>div{display:flex}
 .billDetail .detail_menu_list li .detail_menu_title{width:150px}
 .billDetail .detail_menu_list li .detail_menu_cost{margin-left:auto}
 .billDetail .detail_menu_list li .detail_menu_ingredient>.detail_menu_title{padding-left:40px}
+.billDetail .detail_menu_list li .detail_menu_ingredient h3{font:italic 400 1.2rem "Noto Sans TC",sans-serif}
+.billDetail .checkout_modal .money,.billDetail .detailFooter button{font:normal 400 1.5rem Roboto,sans-serif}
+.billDetail .detailFooter{height:70px;background-color:#313131;padding:20px;display:flex;align-items:center;justify-content:flex-end}
+.billDetail .detailFooter button{height:50px;width:100px;color:#fff;margin-left:10px}
+.orderSetting .quantity>a,.orderSetting .total_quantity>a,.orderSetting>footer>.action>a{color:#000}
+.billDetail .validate_alert{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.billDetail .validate_alert h4{margin-bottom:10px}
+.billDetail .checkout_modal .payAndChange{display:flex;align-items:none;justify-content:space-between}
 .order_product>a{display:flex;justify-content:space-between;align-items:center}
 .order_product>a>.order_desc h3{font:normal 400 1.5rem "Noto Sans TC",sans-serif}
 .order_product>a>.order_desc h4{font:italic 400 .8rem "Noto Sans TC",sans-serif}

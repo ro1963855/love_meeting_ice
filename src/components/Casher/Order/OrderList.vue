@@ -21,16 +21,28 @@
     </div>
     <div class="casher_list_footer">
       <ol>
-        <li class="w-50" @click="$store.dispatch('ORDER_CLEAN');">
+        <li class="w-50" @click="$store.dispatch('ORDER_RESET');" v-if="!orderId">
           <cahser-action :action="{icon: ['fas', 'broom'], name: '清空'}"></cahser-action>
         </li>
-        <li class="w-50" @click="sendOrderToBill()">
+        <li class="w-50" @click="$store.dispatch('ORDER_RESET');" v-else>
+          <cahser-action :action="{icon: ['fas', 'ban'], name: '取消'}"></cahser-action>
+        </li>
+        <li class="w-50" @click="sendBillFlow()">
           <cahser-action :action="{icon: ['far', 'list-alt'], name: '送出'}"></cahser-action>
         </li>
       </ol>
     </div>
-    <order-setting :product.sync="order[selectedIndex]"
+    <order-setting  :product.sync="order[selectedIndex]"
                     @delete="removeCurrentProduct()"></order-setting>
+    <b-modal  ref="saveOrder"
+              size="sm"
+              ok-title="確定"
+              cancel-title="取消"
+              @ok="sendOrderToBill()"
+              centered
+              hide-header>
+      <p class="my-4">確定要更換新的餐點嗎?</p>
+    </b-modal>
   </div>
 </template>
 
@@ -52,6 +64,9 @@ export default {
   created() {},
   mounted() {},
   computed: {
+    orderId() {
+      return this.$store.state.order.id;
+    },
     order() {
       return this.$store.state.order.data;
     },
@@ -83,8 +98,16 @@ export default {
         this.selectedIndex = null;
       }
     },
+    sendBillFlow() {
+      if (this.orderId) {
+        this.$refs.saveOrder.show();
+        return;
+      }
+
+      this.sendOrderToBill();
+    },
     sendOrderToBill() {
-      this.$store.dispatch('BILL_ADD', { order: this.order, userId: 1 });
+      this.$store.dispatch('BILL_ADD', { order: this.order, orderId: this.orderId, userId: 1 });
     },
   },
 };

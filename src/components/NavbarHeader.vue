@@ -1,12 +1,16 @@
 <template>
   <div class="navbar_header">
     <b-navbar variant="primary" type="light" class="w-100 h-100">
-      <b-navbar-brand tag="h1">愛玉見冰</b-navbar-brand>
+      <router-link :to="{ name: 'Order' }">
+        <b-navbar-brand tag="h1">愛玉見冰</b-navbar-brand>
+      </router-link>
       <ol class="menu_list">
         <li class="menu_item" v-for="(item, index) in menu" :key="index">
-          <a href="javascript:"
-              :class="{active: active === index}"
-              @click="active = index">{{ item.name }}</a>
+          <router-link  :to="item.router"
+                        :class="{active: active === index}"
+                        @click="active = index">
+            {{ item.name }}
+          </router-link>
         </li>
       </ol>
     </b-navbar>
@@ -23,7 +27,7 @@ export default {
       menu: [
         {
           name: '菜單',
-          router: {},
+          router: { name: 'Order' },
         },
         {
           name: '統計',

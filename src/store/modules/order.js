@@ -2,6 +2,7 @@ export default {
   strict: true,
   state: {
     data: [],
+    id: null,
   },
   mutations: {
     addOrder(state, product) {
@@ -17,8 +18,16 @@ export default {
     cleanOrder(state) {
       state.data = [];
     },
+    setOrder(state, bill) {
+      state.data = bill.order;
+      state.id = bill.id;
+    },
     removeOrderByIndex(state, index) {
       state.data.splice(index, 1);
+    },
+    resetOrder(state) {
+      state.data = [];
+      state.id = null;
     },
   },
   actions: {
@@ -30,6 +39,12 @@ export default {
     },
     ORDER_REMOVE_BY_Index: (context, index) => {
       context.commit('removeOrderByIndex', index);
+    },
+    ORDER_SET: (context, bill) => {
+      context.commit('setOrder', bill);
+    },
+    ORDER_RESET: (context) => {
+      context.commit('resetOrder');
     },
   },
 };

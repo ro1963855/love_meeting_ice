@@ -33,6 +33,7 @@ export default {
   props: [
     'numberInputerOpen',
     'payOptions',
+    'paySelectedMoney',
   ],
   data() {
     return {
@@ -70,8 +71,10 @@ export default {
     },
     comfirmResult() {
       const options = this.payOptions;
-      options[options.length - 1] = parseInt(this.result, 10);
+      const result = parseInt(this.result, 10);
+      options[options.length - 1] = result;
       this.$emit('update:payOptions', options);
+      this.$emit('update:paySelectedMoney', result);
       this.$emit('update:numberInputerOpen', false);
     },
   },

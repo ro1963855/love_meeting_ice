@@ -3,14 +3,15 @@ $color-placholder: #999999;
 $color-brand: #e4007f;
 $color-header-notActive: #00408B;
 $color-product-notActive: #868488;
-$color-casher-body-bg: #292929;
 $color-product-desc: #413a3a;
+$color-casher-body-bg: #292929;
 $color-casher-primary: #fd6d52;
 $color-casher-placholder: #d5624b;
 $color-casher-bg: #fff7fd;
 $color-casher-border: #cebebe;
 $color-casher-active: #fee6e6;
 $color-bill-order-list: #272527;
+$color-body-footer: #313131;
 
 // font
 $font-title: normal 300 3rem 'Roboto', sans-serif;
@@ -22,6 +23,7 @@ $font-lable: italic 400 0.8rem 'Noto Sans TC', sans-serif;
 $font-bill-title: normal bold 2rem 'Roboto', sans-serif;
 $font-bill-subtitle: normal bold 1.7rem 'Roboto', sans-serif;
 $font-bill-menu: normal 400 1.5rem 'Roboto', sans-serif;
+$font-bill-deail-ingredient: italic 400 1.2rem 'Noto Sans TC', sans-serif;
 
 // form
 $form_height: 52px;
@@ -39,8 +41,9 @@ $casher-footer: 70px;
 $cahser-list-item: 80px; 
 $sidebar-width: 300px;
 $body-header: 70px;
+$body-footer: 70px;
 
 // bill
-$bill-list-height: 70px;
+$bill-list-height: 60px;
 $bill-detail-title-width: 180px;
 $bill-column-margin: 10px;

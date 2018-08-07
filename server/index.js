@@ -21,7 +21,9 @@ app.set('jwtTokenSecret', config.jwt.token);
 
 // account
 router.route('/account/login').post((req, res) => {
-  Users.findOne({ where: req.body, attributes: ['id'] }).then((user) => {
+  Users.findOne(
+    { where: req.body, attributes: ['id'] },
+  ).then((user) => {
     if (user) {
       const accessToken = jwt.encode(
         { iss: user.id },
@@ -31,6 +33,8 @@ router.route('/account/login').post((req, res) => {
     } else {
       res.status(404).json({ result: 'account not exist' });
     }
+  }).catch((err) => {
+    res.status(500).json(err);
   });
 });
 
@@ -38,39 +42,37 @@ router.route('/account/isLogin').post((req, res) => {
   try {
     const token = req.headers['x-access-token'];
     const decoded = jwt.decode(token, app.get('jwtTokenSecret'));
-    Users.findOne({ where: { id: decoded.iss }, attributes: ['id'] }).then(
-      (user) => {
-        if (user) {
-          res.status(200).json({ id: user.id });
-        } else {
-          res.status(404).json({ result: 'token error' });
-        }
-      },
-    );
+    Users.findOne(
+      { where: { id: decoded.iss }, attributes: ['id'] },
+    ).then((user) => {
+      if (user) {
+        res.status(200).json({ id: user.id });
+      } else {
+        res.status(404).json({ result: 'token error' });
+      }
+    }).catch((err) => {
+      res.status(500).json(err);
+    });
   } catch (err) {
     res.status(404).json({ result: 'token error' });
   }
 });
 
 // menu
-// router.route('/menu').get((req, res) => {
-//   Products.findAll({ include: [Categorys, States] }).then(menus =>
-//     res.json(menus),
-//   );
-// });
-
 router.route('/menu').get((req, res) => {
-  Categorys.findAll({
-    include: {
-      model: Products,
-      attributes: ['id', 'productName', 'price'],
+  Categorys.findAll(
+    {
       include: {
-        model: States,
-        attributes: ['id', 'stateName'],
+        model: Products,
+        attributes: ['id', 'productName', 'price'],
+        include: {
+          model: States,
+          attributes: ['id', 'stateName'],
+        },
       },
+      attributes: ['id', 'categoryName'],
     },
-    attributes: ['id', 'categoryName'],
-  }).then(menus =>
+  ).then(menus =>
     res.status(200).json(menus),
   ).catch((err) => {
     res.status(500).json(err);
@@ -79,78 +81,197 @@ router.route('/menu').get((req, res) => {
 
 // bill
 router.route('/bill').get((req, res) => {
-  Bills.findAll({
-    include: [{
-      model: BillMeals,
-      as: 'order',
-      attributes: [['productId', 'id'], 'productName', ['productPrice', 'price'], 'quantity'],
+  Bills.findAll(
+    {
       include: [{
-        model: BillIngredients,
-        as: 'ingredients',
+        model: BillMeals,
+        as: 'order',
         attributes: [['productId', 'id'], 'productName', ['productPrice', 'price'], 'quantity'],
+        include: [{
+          model: BillIngredients,
+          as: 'ingredients',
+          attributes: [['productId', 'id'], 'productName', ['productPrice', 'price'], 'quantity'],
+        }],
       }],
-    }],
-    attributes: ['id', 'userId', 'billStateId', 'totalPrice', 'orderTime'],
-    order: [
-      ['orderTime', 'ASC'],
-    ],
-  })
-    .then(bills => res.status(200).json(bills))
-    .catch((err) => {
-      res.status(500).json(err);
-    });
+      attributes: ['id', 'userId', 'billStateId', 'diningPositionId', 'payMoney', 'totalPrice', 'orderTime'],
+      order: [
+        ['orderTime', 'ASC'],
+      ],
+    },
+  ).then((bills) => {
+    res.status(200).json(bills);
+  }).catch((err) => {
+    res.status(500).json(err);
+  });
 });
 
 router.route('/bill').post((req, res) =>
   sequelize.transaction((t) => {
     const data = req.body;
     let billId = null;
-    return Bills.create({
-      userId: data.userId,
-      billStateId: data.billStatesId,
-      totalPrice: data.totalPrice,
-      orderTime: data.orderTime,
-    }, { transaction: t })
-      .then((bill) => {
-        billId = bill.id;
-        const meals = [];
-        _.forEach(data.order, (product, index) => {
-          meals.push({
-            code: `${billId}_${index + 1}`,
-            billId,
-            productId: product.id,
-            productName: product.productName,
-            productPrice: product.price,
-            quantity: product.quantity,
-          });
+    return Bills.create(
+      {
+        userId: data.userId,
+        billStateId: data.billStatesId,
+        totalPrice: data.totalPrice,
+        orderTime: data.orderTime,
+      },
+      { transaction: t },
+    ).then((bill) => {
+      billId = bill.id;
+      const meals = [];
+      _.forEach(data.order, (product, index) => {
+        meals.push({
+          code: `${billId}_${index + 1}`,
+          billId,
+          productId: product.id,
+          productName: product.productName,
+          productPrice: product.price,
+          quantity: product.quantity,
         });
-
-        return BillMeals.bulkCreate(meals, { transaction: t });
-      })
-      .then(() => {
-        const ingredients = [];
-        _.forEach(data.order, (product, productIndex) => {
-          _.forEach(product.ingredients, (ingredient, ingredientsIndex) => {
-            ingredients.push({
-              code: `${billId}_${productIndex + 1}_${ingredientsIndex + 1}`,
-              billMealCode: `${billId}_${productIndex + 1}`,
-              productId: ingredient.id,
-              productName: ingredient.productName,
-              productPrice: ingredient.price,
-              quantity: ingredient.quantity,
-            });
-          });
-        });
-
-        return BillIngredients.bulkCreate(ingredients, { transaction: t });
-      })
-      .then(() => {
-        res.status(200).json({ id: billId });
-      })
-      .catch((err) => {
-        t.rollback();
-        res.status(500).json(err);
       });
+
+      return BillMeals.bulkCreate(meals, { transaction: t });
+    }).then(() => {
+      const ingredients = [];
+      _.forEach(data.order, (product, productIndex) => {
+        _.forEach(product.ingredients, (ingredient, ingredientsIndex) => {
+          ingredients.push({
+            code: `${billId}_${productIndex + 1}_${ingredientsIndex + 1}`,
+            billMealCode: `${billId}_${productIndex + 1}`,
+            productId: ingredient.id,
+            productName: ingredient.productName,
+            productPrice: ingredient.price,
+            quantity: ingredient.quantity,
+          });
+        });
+      });
+
+      return BillIngredients.bulkCreate(ingredients, { transaction: t });
+    }).then(() => {
+      res.status(200).json({ id: billId });
+    }).catch((err) => {
+      t.rollback();
+      res.status(500).json(err);
+    });
+  }),
+);
+
+router.route('/bill').patch((req, res) =>
+  sequelize.transaction((t) => {
+    const data = req.body;
+    return Bills.update(
+      {
+        payTime: data.payTime,
+        billStateId: data.billStateId,
+        diningPositionId: data.diningPositionId,
+        payMoney: data.payMoney,
+      },
+      {
+        where: { id: data.id },
+        transaction: t,
+      },
+    ).then((updateResult) => {
+      const affectCount = updateResult[0];
+      if (affectCount > 0) {
+        res.status(204).json();
+      } else {
+        res.status(404).json();
+      }
+    }).catch((err) => {
+      t.rollback();
+      res.status(500).json(err);
+    });
+  }),
+);
+
+router.route('/bill').put((req, res) =>
+  sequelize.transaction((t) => {
+    const data = req.body;
+    const billId = data.id;
+    return BillMeals.destroy(
+      {
+        where: { billId },
+        include: [{
+          model: BillIngredients,
+        }],
+        transaction: t,
+      },
+    ).then(() => {
+      return Bills.update(
+        {
+          userId: data.userId,
+          billStateId: data.billStatesId,
+          totalPrice: data.totalPrice,
+          orderTime: data.orderTime,
+        },
+        {
+          where: { id: billId },
+          transaction: t,
+        },
+      );
+    }).then(() => {
+      const meals = [];
+      _.forEach(data.order, (product, index) => {
+        meals.push({
+          code: `${billId}_${index + 1}`,
+          billId,
+          productId: product.id,
+          productName: product.productName,
+          productPrice: product.price,
+          quantity: product.quantity,
+        });
+      });
+
+      return BillMeals.bulkCreate(meals, { transaction: t });
+    }).then(() => {
+      const ingredients = [];
+      _.forEach(data.order, (product, productIndex) => {
+        _.forEach(product.ingredients, (ingredient, ingredientsIndex) => {
+          ingredients.push({
+            code: `${billId}_${productIndex + 1}_${ingredientsIndex + 1}`,
+            billMealCode: `${billId}_${productIndex + 1}`,
+            productId: ingredient.id,
+            productName: ingredient.productName,
+            productPrice: ingredient.price,
+            quantity: ingredient.quantity,
+          });
+        });
+      });
+
+      return BillIngredients.bulkCreate(ingredients, { transaction: t });
+    }).then(() => {
+      res.status(204).json();
+    }).catch((err) => {
+      t.rollback();
+      res.status(500).json(err);
+    });
+  }),
+);
+
+router.route('/bill').delete((req, res) =>
+  sequelize.transaction((t) => {
+    const data = req.body;
+    return Bills.update(
+      {
+        deleteTime: data.deleteTime,
+        billStateId: data.billStateId,
+      },
+      {
+        where: { id: data.id },
+        transaction: t,
+      },
+    ).then((updateResult) => {
+      const affectCount = updateResult[0];
+      if (affectCount > 0) {
+        res.status(204).json();
+      } else {
+        res.status(404).json();
+      }
+    }).catch((err) => {
+      t.rollback();
+      res.status(500).json(err);
+    });
   }),
 );
 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
  * Bootstrap v4.1.2 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -6586,8 +6587,10 @@ a.text-dark:hover, a.text-dark:focus {
       font: italic 400 0.8rem "Noto Sans TC", sans-serif; }
 
 .billDetail {
-  height: 100%;
-  overflow: hidden; }
+  height: 100%; }
+  .billDetail .detailBody {
+    height: calc(100% - 70px - 70px);
+    overflow: hidden; }
   .billDetail > .header {
     height: 70px;
     border-bottom: 2px solid #000;
@@ -6597,7 +6600,7 @@ a.text-dark:hover, a.text-dark:focus {
       color: #fff;
       margin: auto; }
   .billDetail .detail_list > li {
-    height: 80px;
+    height: 60px;
     border-bottom: 2px solid #000;
     color: #fff;
     display: flex; }
@@ -6631,10 +6634,12 @@ a.text-dark:hover, a.text-dark:focus {
     background-color: #272527;
     margin: 10px;
     margin-top: 0;
-    margin-left: 180px; }
+    margin-left: 180px;
+    width: 450px; }
     .billDetail .detail_menu_list li {
       display: flex;
-      flex-direction: column; }
+      flex-direction: column;
+      margin-bottom: 5px; }
       .billDetail .detail_menu_list li h3 {
         font: normal 400 1.5rem "Roboto", sans-serif; }
       .billDetail .detail_menu_list li > div {
@@ -6645,6 +6650,34 @@ a.text-dark:hover, a.text-dark:focus {
         margin-left: auto; }
       .billDetail .detail_menu_list li .detail_menu_ingredient > .detail_menu_title {
         padding-left: 40px; }
+      .billDetail .detail_menu_list li .detail_menu_ingredient h3 {
+        font: 　 italic 400 1.2rem "Noto Sans TC", sans-serif; }
+  .billDetail .detailFooter {
+    height: 70px;
+    background-color: #313131;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; }
+    .billDetail .detailFooter button {
+      height: 50px;
+      width: 100px;
+      color: #fff;
+      font: normal 400 1.5rem "Roboto", sans-serif;
+      margin-left: 10px; }
+  .billDetail .validate_alert {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .billDetail .validate_alert h4 {
+      margin-bottom: 10px; }
+  .billDetail .checkout_modal .payAndChange {
+    display: flex;
+    align-items: none;
+    justify-content: space-between; }
+  .billDetail .checkout_modal .money {
+    font: normal 400 1.5rem "Roboto", sans-serif; }
 
 .order_product > a {
   display: flex;

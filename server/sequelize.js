@@ -7,6 +7,7 @@ const BillsModel = require('./models/bills');
 const BillStatesModel = require('./models/billStates');
 const BillMealsModel = require('./models/billMeals');
 const BillIngredientsModel = require('./models/billIngredients');
+const DiningPositionsModel = require('./models/diningPositions');
 const config = require('./config.json');
 
 const sequelize = new Sequelize(config.mysql.database, config.mysql.user, config.mysql.password, {
@@ -29,12 +30,14 @@ const Bills = BillsModel(sequelize, Sequelize);
 const BillStates = BillStatesModel(sequelize, Sequelize);
 const BillMeals = BillMealsModel(sequelize, Sequelize);
 const BillIngredients = BillIngredientsModel(sequelize, Sequelize);
+const DiningPositions = DiningPositionsModel(sequelize, Sequelize);
 
 Products.belongsTo(Categorys);
 Products.belongsTo(States);
 Categorys.hasMany(Products);
 Bills.belongsTo(Users);
 Bills.belongsTo(BillStates);
+Bills.belongsTo(DiningPositions);
 Bills.hasMany(BillMeals, { as: 'order' });
 BillMeals.belongsTo(Bills);
 BillMeals.belongsTo(Products);
@@ -56,4 +59,5 @@ module.exports = {
   BillMeals,
   BillIngredients,
   sequelize,
+  DiningPositions,
 };

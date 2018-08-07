@@ -1,6 +1,10 @@
 .billDetail {
   height: 100%;
-  overflow: hidden;
+  .detailBody {
+    height: calc(100% - #{$body-header} - #{$body-footer});
+    overflow: hidden;
+  }
+
   > .header {
     height: $body-header;
     border-bottom: 2px solid $black;
@@ -13,7 +17,7 @@
   }
 
   .detail_list > li {
-    height: $cahser-list-item;
+    height: $bill-list-height;
     border-bottom: 2px solid $black;
     color: $white;
     display: flex;
@@ -63,9 +67,11 @@
     margin: $bill-column-margin;
     margin-top: 0;
     margin-left: $bill-detail-title-width;
+    width: 450px;
     li {
       display: flex;
       flex-direction: column;
+      margin-bottom: 5px;
       h3 {
         font: $font-bill-menu;
       }
@@ -86,7 +92,42 @@
         > .detail_menu_title {
           padding-left: 40px;
         }
+        
+        h3 {
+          font:　$font-bill-deail-ingredient;
+        }
       }
+    }
+  }
+
+  .detailFooter {
+    height: $body-footer;
+    background-color: $color-body-footer;
+    padding: 20px;
+    @include flex(center, flex-end);
+    button {
+      height: 50px;
+      width: 100px;
+      color: $white;
+      font: $font-bill-menu;
+      margin-left: 10px;
+    }
+  }
+
+  .validate_alert {
+    @include absolute_translate_center();
+    h4 {
+      margin-bottom: 10px;
+    }
+  }
+
+  .checkout_modal {
+    .payAndChange {
+      @include flex(none, space-between);
+    }
+
+    .money {
+      font: $font-bill-menu;
     }
   }
 }

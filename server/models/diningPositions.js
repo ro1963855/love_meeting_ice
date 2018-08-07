@@ -1,16 +1,16 @@
 module.exports = (sequelize, Sequelize) =>
   sequelize.define(
-    '{{snakeCase name}}',
+    'dining_positions',
     {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
       },
-      // account: {
-      //   type: Sequelize.STRING,
-      //   allowNull: false,
-      // },
+      position: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       createdAt: {
         type: 'TIMESTAMP',
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
