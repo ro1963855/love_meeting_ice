@@ -6787,6 +6787,9 @@ a.text-dark:hover, a.text-dark:focus {
     padding: 20px 0;
     overflow: hidden; }
 
+.chartList {
+  padding: 20px; }
+
 .navbar_header {
   height: 60px; }
   .navbar_header h1 {
@@ -6863,6 +6866,12 @@ a.text-dark:hover, a.text-dark:focus {
   .login .form_btn {
     margin-top: 16px;
     color: #fff; }
+
+.chart {
+  height: calc(100% - 60px); }
+  .chart .chart_sidelist {
+    width: 300px;
+    height: 100%; }
 
 body {
   min-width: 960px; }

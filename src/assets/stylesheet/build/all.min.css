@@ -1885,6 +1885,7 @@ h2,h3{page-break-after:avoid}
 .productMenu>.product_category a{text-decoration:none;white-space:nowrap;color:#868488;font:normal 300 1.5rem "Noto Sans TC",sans-serif}
 .productMenu>.product_category a.active{color:#fff}
 .productMenu>.product_list{height:calc(100% - 70px);padding:20px 0;overflow:hidden}
+.chartList{padding:20px}
 .navbar_header{height:60px}
 .navbar_header h1{color:#e4007f!important;font:normal 700 1.5rem "Noto Sans TC",sans-serif}
 .navbar_header .menu_list{display:flex}
@@ -1904,6 +1905,8 @@ h2,h3{page-break-after:avoid}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
+.chart{height:calc(100% - 60px)}
+.chart .chart_sidelist{width:300px;height:100%}
 body{min-width:960px}
 *,h1,h2,h3,h4{line-height:1;margin:0;padding:0;list-style:none}
 address,dl,ol,p,pre,ul{margin-bottom:0}

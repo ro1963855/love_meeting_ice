@@ -14,9 +14,11 @@
 @import 'components/Casher/Order/OrderSetting';
 @import 'components/Product/Product';
 @import 'components/Product/ProductMenu';
+@import 'components/Chart/ChartList';
 @import 'components/NavbarHeader';
 @import 'components/NumberInputer';
 @import 'pages/Login';
+@import 'pages/Chart';
 
 body {
   min-width: 960px;

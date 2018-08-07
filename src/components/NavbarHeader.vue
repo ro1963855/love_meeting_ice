@@ -7,7 +7,7 @@
       <ol class="menu_list">
         <li class="menu_item" v-for="(item, index) in menu" :key="index">
           <router-link  :to="item.router"
-                        :class="{active: active === index}"
+                        :class="{active: isActivePage(item.containPage) }"
                         @click="active = index">
             {{ item.name }}
           </router-link>
@@ -24,32 +24,54 @@ export default {
   data() {
     return {
       active: 0,
+      currentRouterName: null,
       menu: [
         {
           name: '菜單',
           router: { name: 'Order' },
+          containPage: [
+            'Order',
+            'Bill',
+          ],
         },
         {
           name: '統計',
-          router: {},
+          router: { name: 'DailyChart' },
+          containPage: [
+            'DailyChart',
+            'IncomeChart',
+            'HotTimeChart',
+            'HotProductChart',
+          ],
         },
         {
           name: '其他',
           router: {},
+          containPage: [],
         },
       ],
     };
   },
-  created() {},
+  created() {
+    this.currentRouterName = this.$route.name;
+  },
   mounted() {},
   computed: {
     // variable() {},
   },
   watch: {
     // variable(new, old) {}
+    $route() {
+      this.currentRouterName = this.$route.name;
+    },
   },
   methods: {
     // foo() {},
+    isActivePage(containPage) {
+      return containPage.some((page) => {
+        return page === this.currentRouterName;
+      });
+    },
   },
 };
 </script>

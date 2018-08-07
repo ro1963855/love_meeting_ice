@@ -1,0 +1,7 @@
+.chart {
+  height: calc(100% - #{$navbar-height});
+  .chart_sidelist {
+    width: $sidebar-width;
+    height: 100%;
+  }
+}
