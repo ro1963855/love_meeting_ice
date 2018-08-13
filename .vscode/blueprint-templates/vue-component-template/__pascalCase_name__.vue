@@ -18,6 +18,10 @@ export default {
   },
   watch: {
     // variable(new, old) {}
+    // variable: {
+    //   handler() {},
+    //   deep: true,
+    // },
   },
   methods: {
     // foo() {},

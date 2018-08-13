@@ -45,7 +45,6 @@ export default {
   name: 'dailyChart',
   components: {
     ChartList,
-    // BField,
   },
   props: [],
   data() {
@@ -98,7 +97,7 @@ export default {
     };
   },
   created() {
-    this.selectedDate = new Date('2018-08-08');
+    this.selectedDate = new Date();
   },
   mounted() {},
   computed: {},
@@ -116,11 +115,11 @@ export default {
           if (response.status === 200) {
             this.countDailyChartData(response.data);
           } else {
-            alert('日營業資訊取得失敗!!!!(嚴重)');
+            alert('日收益資訊取得失敗!!!!(嚴重)');
           }
         })
         .catch(() => {
-          alert('日營業資訊取得失敗!!!!(嚴重)');
+          alert('日收益資訊取得失敗!!!!(嚴重)');
         });
     },
     countDailyChartData(data) {

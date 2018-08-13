@@ -301,7 +301,7 @@ router.route('/chart/day').get((req, res) => {
         }],
       }],
       where: whereCondition,
-      attributes: ['id', 'totalPrice', 'orderTime'],
+      attributes: ['id', 'totalPrice', 'orderTime', 'payTime'],
       order: [
         ['orderTime', 'ASC'],
       ],

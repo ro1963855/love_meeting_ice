@@ -19,11 +19,11 @@ export default {
     return {
       list: [
         {
-          desc: '日報表',
+          desc: '日收益',
           router: { name: 'DailyChart' },
         },
         {
-          desc: '收益表',
+          desc: '收益趨勢',
           router: { name: 'IncomeChart' },
         },
         {
