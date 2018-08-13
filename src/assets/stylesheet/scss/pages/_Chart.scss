@@ -1,7 +1,30 @@
 .chart {
   height: calc(100% - #{$navbar-height});
-  .chart_sidelist {
+  > .chart_sidelist {
     width: $sidebar-width;
     height: 100%;
   }
+
+  > .chart_body {
+    width: calc(100% - #{$sidebar-width});
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    .row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .chart_form_title {
+    @include flex(center, flex-end);
+    font: $font-bill-menu;
+  }
+
+  .chart_form_text {
+    @include flex(center, flex-start);
+    font: $font-bill-menu;
+  }
+  
 }

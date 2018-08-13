@@ -14,6 +14,10 @@ import VueSession from 'vue-session';
 import VueDragscroll from 'vue-dragscroll';
 import VueLodash from 'vue-lodash';
 import * as moment from 'moment';
+import VCalendar from 'v-calendar';
+import Buefy from 'buefy';
+import VueHighcharts from 'vue-highcharts';
+import 'v-calendar/lib/v-calendar.min.css';
 import './assets/stylesheet/build/all.min.css';
 import App from './App';
 import router from './router';
@@ -29,6 +33,12 @@ Vue.use(VueRouter);
 Vue.use(VueSession, { persist: true });
 Vue.use(VueDragscroll);
 Vue.use(VueLodash);
+Vue.use(Buefy);
+Vue.use(VueHighcharts);
+Vue.use(VCalendar, {
+  firstDayOfWeek: 2, // Monday
+  // popoverVisibility: 'focus',
+});
 Vue.config.productionTip = false;
 
 moment.locale('zh-tw');

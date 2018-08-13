@@ -6869,9 +6869,28 @@ a.text-dark:hover, a.text-dark:focus {
 
 .chart {
   height: calc(100% - 60px); }
-  .chart .chart_sidelist {
+  .chart > .chart_sidelist {
     width: 300px;
     height: 100%; }
+  .chart > .chart_body {
+    width: calc(100% - 300px);
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden; }
+    .chart > .chart_body .row {
+      margin-left: 0;
+      margin-right: 0; }
+  .chart .chart_form_title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font: normal 400 1.5rem "Roboto", sans-serif; }
+  .chart .chart_form_text {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font: normal 400 1.5rem "Roboto", sans-serif; }
 
 body {
   min-width: 960px; }

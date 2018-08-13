@@ -1902,11 +1902,16 @@ h2,h3{page-break-after:avoid}
 .numberInputer .action{background-color:#d0782a}
 .login{margin:48px 0}
 .login .title{font:normal 300 3rem Roboto,sans-serif;color:#000;text-align:center;margin-bottom:40px}
+.chart .chart_form_text,.chart .chart_form_title{display:flex;font:normal 400 1.5rem Roboto,sans-serif}
 .login .form_item{margin-bottom:24px}
 .login .form_item h2{margin-bottom:8px}
 .login .form_btn{margin-top:16px;color:#fff}
 .chart{height:calc(100% - 60px)}
-.chart .chart_sidelist{width:300px;height:100%}
+.chart>.chart_sidelist{width:300px;height:100%}
+.chart>.chart_body{width:calc(100% - 300px);height:100%;padding-top:20px;padding-bottom:20px;overflow:hidden}
+.chart>.chart_body .row{margin-left:0;margin-right:0}
+.chart .chart_form_title{align-items:center;justify-content:flex-end}
+.chart .chart_form_text{align-items:center;justify-content:flex-start}
 body{min-width:960px}
 *,h1,h2,h3,h4{line-height:1;margin:0;padding:0;list-style:none}
 address,dl,ol,p,pre,ul{margin-bottom:0}

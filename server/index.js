@@ -275,6 +275,44 @@ router.route('/bill').delete((req, res) =>
   }),
 );
 
+// chart
+router.route('/chart/day').get((req, res) => {
+  let whereCondition = {};
+  if (!_.isEmpty(req.query.startDate) && !_.isEmpty(req.query.endDate)) {
+    const startDate = new Date(`${req.query.startDate} 00:00:00`);
+    const endDate = new Date(`${req.query.endDate} 23:59:59`);
+    whereCondition = {
+      payTime: {
+        $between: [startDate, endDate],
+      },
+    };
+  }
+
+  Bills.findAll(
+    {
+      include: [{
+        model: BillMeals,
+        as: 'order',
+        attributes: ['productName', 'quantity'],
+        include: [{
+          model: BillIngredients,
+          as: 'ingredients',
+          attributes: ['productName', 'quantity'],
+        }],
+      }],
+      where: whereCondition,
+      attributes: ['id', 'totalPrice', 'orderTime'],
+      order: [
+        ['orderTime', 'ASC'],
+      ],
+    },
+  ).then((bills) => {
+    res.status(200).json(bills);
+  }).catch((err) => {
+    res.status(500).json(err);
+  });
+});
+
 app.use('/api', router);
 
 // API ENDPOINTS
