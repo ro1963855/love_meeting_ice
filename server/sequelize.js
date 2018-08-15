@@ -10,17 +10,22 @@ const BillIngredientsModel = require('./models/billIngredients');
 const DiningPositionsModel = require('./models/diningPositions');
 const config = require('./config.json');
 
-const sequelize = new Sequelize(config.mysql.database, config.mysql.user, config.mysql.password, {
-  host: config.mysql.host,
-  dialect: 'mysql',
-  pool: {
-    max: 10,
-    min: 0,
-    acquire: 30000,
-    idle: 10000,
+const sequelize = new Sequelize(
+  config.mysql.database,
+  config.mysql.user,
+  config.mysql.password,
+  {
+    host: config.mysql.host,
+    dialect: 'mysql',
+    pool: {
+      max: 10,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+    timezone: 'Asia/Taipei',
   },
-  timezone: 'Asia/Taipei',
-});
+);
 
 const Users = UsersModel(sequelize, Sequelize);
 const States = StatesModel(sequelize, Sequelize);

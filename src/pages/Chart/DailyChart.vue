@@ -130,8 +130,10 @@ export default {
         totalPrice += bill.totalPrice;
         this._.forEach(bill.order, (product) => {
           totalSellProductsNum += product.quantity;
-          totalProductSellNumberSeries =
-            this.setProductSellNumberSeries(totalProductSellNumberSeries, product);
+          totalProductSellNumberSeries = this.setProductSellNumberSeries(
+            totalProductSellNumberSeries,
+            product,
+          );
         });
       });
 
@@ -140,13 +142,18 @@ export default {
       this.totalSellProductsNum = totalSellProductsNum;
     },
     setHighChartInfo(totalProductSellNumberSeries) {
-      totalProductSellNumberSeries = this._.sortBy(totalProductSellNumberSeries, ['y']).reverse();
+      totalProductSellNumberSeries = this._.sortBy(
+        totalProductSellNumberSeries,
+        ['y'],
+      ).reverse();
       const date = this.$moment(this.selectedDate).format('YYYY-MM-DD');
       this.chartOption.title.text = `${date} 銷售狀況`;
       this.chartOption.series[0].data = totalProductSellNumberSeries;
     },
     setProductSellNumberSeries(totalProductSellNumberSeries, product) {
-      const serie = this._.find(totalProductSellNumberSeries, { name: product.productName });
+      const serie = this._.find(totalProductSellNumberSeries, {
+        name: product.productName,
+      });
       if (!serie) {
         totalProductSellNumberSeries.push({
           name: product.productName,

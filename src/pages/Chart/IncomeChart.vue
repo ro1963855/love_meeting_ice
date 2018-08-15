@@ -50,10 +50,7 @@ export default {
           text: '',
         },
         xAxis: {
-          type: 'datetime',
-          dateTimeLabelFormats: {
-            day: '%y-%m-%d',
-          },
+          type: 'category',
         },
         yAxis: {
           title: {
@@ -72,8 +69,8 @@ export default {
           },
         },
         tooltip: {
-          headerFormat: '<span style="font-size:11px">{point.x:%Y-%m-%d}</span><br>',
-          pointFormat: '<span style="color:{point.color}"><b>總共 {point.y}</b> 元<br/>',
+          pointFormat:
+            '<span style="color:{point.color}"><b>總共 {point.y}</b> 元<br/>',
         },
         series: [
           {
@@ -111,7 +108,6 @@ export default {
     // variable() {},
   },
   watch: {
-    // variable(new, old) {}
     selectedDate: {
       handler() {
         this.getDailyChartByRangeDate();
@@ -137,7 +133,6 @@ export default {
         });
     },
     countIncomeChartData(data) {
-      console.log(data);
       let incomeChartSeries = [];
       if (this.unit === '日') {
         incomeChartSeries = this.getReportDataByDate(data);
@@ -161,16 +156,18 @@ export default {
         const currentDate = this.$moment(loop).format('YYYY-MM-DD');
         let totalPrice = 0;
         this._.forEach(data, (order) => {
-          console.log(this.$moment(new Date(order.orderTime)).format('YYYY-MM-DD'), currentDate);
-          if (this.$moment(new Date(order.payTime)).format('YYYY-MM-DD') === currentDate) {
+          if (
+            this.$moment(new Date(order.payTime)).format('YYYY-MM-DD') ===
+            currentDate
+          ) {
             totalPrice += order.totalPrice;
           }
         });
 
-        incomeChartSeries.push([
-          this.$moment(loop).valueOf(),
-          totalPrice,
-        ]);
+        incomeChartSeries.push({
+          name: this.$moment(loop).format('MM-DD'),
+          y: totalPrice,
+        });
         loop = new Date(loop.setDate(loop.getDate() + 1));
       }
 
